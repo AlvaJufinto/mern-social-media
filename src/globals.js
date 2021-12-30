@@ -7,19 +7,22 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         font-family: quicksand, Arial;
     }
+
 `
 
 export const GlobalColors = {
-    blue: "#006FFF",
+    blue: "#0187ff",
     black: "#181E26",
     grey: "#4C5259",
     white: "#FFF",
-    green: "#7EBE9A"
+    green: "#7EBE9A",
+    red: "rgb(255, 134, 134)"
 }
 
 export const GlobalMeasurement = {
     navbarHeight: 50,
     extendedNavbarHeight: 350,
     sidebarWidth: 280,
-    squareBorderRadius: 10,
+    squareBorderRadius: 5,
+    containerWidth: 1200,
 }

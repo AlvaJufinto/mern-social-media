@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
-export const HomeSection = styled.div`
+export const ProfileSection = styled.div`
     background: ${GlobalColors.black};
     margin: ${GlobalMeasurement.navbarHeight}px 0 0 0;
     padding: 20px 20px 0px 20px;
@@ -14,7 +15,7 @@ export const HomeSection = styled.div`
     }
 `
 
-export const HomeContainer = styled.div`
+export const ProfileContainer = styled.div`
     min-height: 100vh;
     width: ${GlobalMeasurement.containerWidth};
     display: flex;

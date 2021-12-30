@@ -3,21 +3,39 @@ import { Link } from 'react-router-dom'
 
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
-import { Menu } from '@mui/icons-material';
+import { ChatRounded } from '@mui/icons-material';
 
-export const NavbarStyled = styled.nav`
+export const NavbarTop = styled.nav`
     position: fixed;
     z-index: 5;
     top: 0;
     left: 0;
     right: 0;
     height: ${GlobalMeasurement.navbarHeight}px;
-    padding: 0px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background: ${GlobalColors.blue};
     color: ${GlobalColors.white}; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+`
+
+export const NavbarContainer = styled.div`
+    width: ${GlobalMeasurement.containerWidth};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: orange; */
+
+    @media (max-width: 1000px) {
+        /* padding: 0px 20px; */
+        justify-content: space-between;
+    }
+`
+
+export const NavbarTitleLogo = styled.img`
+    height: 50px;
+    width: 50px;
 `
 
 export const NavbarTitle = styled(Link)`
@@ -26,36 +44,38 @@ export const NavbarTitle = styled(Link)`
     font-weight: bold;
     color: ${GlobalColors.white};
     text-decoration: none;
+    display: flex;
+    align-items: center;
 `
 export const NavbarCenter = styled.div`
-    flex: 3;
-    background: ${GlobalColors.grey};
+    flex: 1;
+    background: ${GlobalColors.white};
     display: flex;
-    color: ${GlobalColors.white};
+    color: ${GlobalColors.black};
     padding: 5px 10px;
     border-radius: 20px;
     
     @media (max-width: 1000px) {
         display: none;
     }
-    `
+`
 
 export const NavbarSearchBar = styled.input`
     border: none;
     outline: none;
     width: 100%;
     margin: 0px 10px;
-    background: ${GlobalColors.grey};
-    color: ${GlobalColors.white};
+    background: ${GlobalColors.white};
+    color: ${GlobalColors.black};
     `
 
 export const NavbarRight = styled.div`
     margin: 0px 0px 0px 20px;
-    flex: 1.5;
-    max-width: 500px;
+    min-width: ${GlobalMeasurement.sidebarWidth}px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background: red; */
 
     @media (max-width: 1000px) {
         display: none;
@@ -63,8 +83,7 @@ export const NavbarRight = styled.div`
 `
 
 export const NavbarLinkContainer = styled.div`
-    display: flex;
-    width: 15vw;
+    width: 45%;
     display: flex;
     justify-content: space-between;
 `
@@ -98,49 +117,40 @@ export const ProfileOptions = styled.div`
     flex-direction: column;
     background: ${GlobalColors.grey};
     padding: 15px 15px;
-    border-radius: 10px;
-    /* box-shadow: 0px 0px 70px -30px ${GlobalColors.white}; */
+    border-radius: ${GlobalMeasurement.squareBorderRadius}px;
+    box-shadow: 0px 0px 40px -30px ${GlobalColors.white};
 `;
 
-export const NavbarMenuIcon = styled(Menu)`
+export const ChatRoundedIcon = styled(ChatRounded)`
     display: none !important;
+    color: white;
 
     @media (max-width: 1000px) {
         display: flex !important;
     }
 `;
 
-export const NavbarExtended = styled.div`
-    height: ${GlobalMeasurement.extendedNavbarHeight}px;
-    transition: all 0.5s ease;
-    position: fixed;
-    top: ${({ isExtended }) => { 
-        if(isExtended) {
-            return GlobalMeasurement.navbarHeight;
-        } else {
-            return -(GlobalMeasurement.extendedNavbarHeight);
-        }
-    }}px;
-    left: 0;
-    right: 0;
-    background-color: ${GlobalColors.blue};
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
-    @media (min-width: 1000px) {
-        display: none;
-    }
-`
+export const NavbarBottom = styled.div`
+    display: none;
 
-export const NavbarExtendedSearchBar = styled.div`
-    background: ${GlobalColors.grey};
-    display: flex;
-    color: ${GlobalColors.white};
-    padding: 5px 10px;
-    height: 60px;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 40px;
-` 
+    @media (max-width: 1000px) {
+        position: fixed;
+        z-index: 5;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: ${GlobalMeasurement.navbarHeight}px;
+        background: ${GlobalColors.blue};
+        color: ${GlobalColors.white}; 
+        padding: 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+`;
+
+export const NavbarBottomImage = styled.img`
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+`;

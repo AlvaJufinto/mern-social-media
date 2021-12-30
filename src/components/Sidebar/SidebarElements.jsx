@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
 export const SidebarStyled = styled.div`
+    position: sticky;
+    top: ${GlobalMeasurement.navbarHeight + 20}px;
+    height: calc(100vh - ${GlobalMeasurement.navbarHeight}px);
     width: ${GlobalMeasurement.sidebarWidth}px;
     color: white;
 
@@ -22,7 +25,7 @@ export const FollowingContainer = styled.div`
 
 export const FollowingCards = styled.div`
     margin: 20px 20px 0px 0px;
-    background: ${GlobalColors.grey};   
+    /* background: ${GlobalColors.grey};    */
     border-radius: ${GlobalMeasurement.squareBorderRadius}px;
 `
 
@@ -34,6 +37,13 @@ export const FollowingCard = styled(Link)`
     cursor: pointer;
     color: ${GlobalColors.white};
     text-decoration: none;
+    
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px;
+    }
 `
 
 export const FollowingImg = styled.img`

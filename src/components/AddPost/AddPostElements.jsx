@@ -46,6 +46,17 @@ export const BottomAddPost = styled.div`
     justify-content: space-between;
     align-items: center;
 `
+export const ShareImgContainer = styled.div`
+    margin: 30px 0px 0px 0px;
+    width: 100%;
+    position: relative;
+`
+
+export const ShareImg = styled.img`
+    width: 100%;
+    object-fit: contain;
+`
+
 
 export const AttachmentsContainer = styled.label`
     display: flex;

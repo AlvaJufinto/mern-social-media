@@ -1,4 +1,6 @@
-import { Image } from '@mui/icons-material';
+import { useState } from 'react';
+import { Image, Cancel } from '@mui/icons-material';
+import { GlobalColors } from "../../globals";
 
 import {
     AddPostStyled,
@@ -7,18 +9,38 @@ import {
     AddPostTextInput,
     AttachmentsContainer,
     BottomAddPost,
-    AddPostButton
+    AddPostButton,
+    ShareImgContainer,
+    ShareImg,
 } from "./AddPostElements"
 
-import noAvatar from "../../img/noAvatar.png";
+import noAvatar from "../../assets/noAvatar.png";
 
-const Feed = () => {
+const AddPost = () => {
+    const [file, setFile] = useState(null);
+
     return ( 
         <AddPostStyled>
             <TopAddPost>
                 <AddPostProfilePicture src={noAvatar} />
                 <AddPostTextInput placeholder="Tell us what you're thnking about, William!" />
             </TopAddPost>
+            {file && (
+                <ShareImgContainer>
+                    <ShareImg src={URL.createObjectURL(file)} alt="tempImg" />
+                    <Cancel 
+                        onClick={() => setFile(null)}
+                        style={{
+                            position: 'absolute',
+                            right: '0',
+                            top: '0',
+                            // color: GlobalColors.black,
+                            opacity: '0.7',
+                            cursor: 'pointer'
+                        }} 
+                    />
+                </ShareImgContainer>
+            )}
             <BottomAddPost>
                 <AttachmentsContainer htmlFor="media">
                     <Image style={{
@@ -37,6 +59,7 @@ const Feed = () => {
                         type="file" 
                         id="media"
                         accept=".png,.jpeg,.jpg"
+                        onChange={(e) => setFile(e.target.files[0])}
                     />
                 </AttachmentsContainer>
                 <AddPostButton>Share</AddPostButton>
@@ -45,4 +68,4 @@ const Feed = () => {
      );
 }
  
-export default Feed;
+export default AddPost;

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 
-import noAvatar from "../../img/noAvatar.png";
+import { GlobalColors } from "../../globals";
+import noAvatar from "../../assets/noAvatar.png";
 
 import { 
     SidebarStyled,
@@ -20,36 +21,29 @@ const Sidebar = () => {
                     <FollowingCards>
                         <FollowingCard to="/profile/:id" exact>
                             <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
+                            <p>blake_s</p>
+                            <p style={{
+                                color: GlobalColors.red,
+                                marginLeft: 'auto'
+                            }}>Unfollow</p>
                         </FollowingCard>
                         <FollowingCard to="/profile/:id" exact>
                             <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
+                            <p>blake_s</p>
+                            <p style={{
+                                color: GlobalColors.red,
+                                marginLeft: 'auto'
+                            }}>Unfollow</p>
                         </FollowingCard>
                         <FollowingCard to="/profile/:id" exact>
                             <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
+                            <p>blake_s</p>
+                            <p style={{
+                                color: GlobalColors.red,
+                                marginLeft: 'auto'
+                            }}>Unfollow</p>
                         </FollowingCard>
-                        <FollowingCard to="/profile/:id" exact>
-                            <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
-                        </FollowingCard>
-                        <FollowingCard to="/profile/:id" exact>
-                            <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
-                        </FollowingCard>
-                        <FollowingCard to="/profile/:id" exact>
-                            <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
-                        </FollowingCard>
-                        <FollowingCard to="/profile/:id" exact>
-                            <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
-                        </FollowingCard>
-                        <FollowingCard to="/profile/:id" exact>
-                            <FollowingImg src={noAvatar} />
-                            <p>William Schofield</p>
-                        </FollowingCard>
+                        
                     </FollowingCards>
                 </FollowingContainer>
             </SidebarStyled>   

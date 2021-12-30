@@ -10,6 +10,14 @@ const Feed = () => {
         <FeedStyled>
             <AddPost />
             <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
         </FeedStyled>
      );
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import {
@@ -5,8 +6,8 @@ import {
     ThumbUp, 
     ThumbUpAltOutlined 
 } from '@mui/icons-material';
-import noBanner from "../../img/noBanner.jpg";
-import noAvatar from "../../img/noAvatar.png";
+import noBanner from "../../assets/noBanner.jpg";
+import noAvatar from "../../assets/noAvatar.png";
 
 import { 
     PostStyled,
@@ -26,6 +27,19 @@ import {
 } from "./PostElements";
 
 const Post = () => {
+    const [like, setLike] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+
+    const likePost = () => {
+        if(isLiked) {
+            setLike(like - 1);
+            setIsLiked(!isLiked);
+        } else {
+            setLike(like + 1);
+            setIsLiked(!isLiked);
+        }
+    }
+
     return ( 
         <Router>
             <PostStyled>
@@ -45,8 +59,10 @@ const Post = () => {
                 </MiddlePost>
                 <BottomPost>
                     <BottomPostLike>
-                        <ThumbUpAltOutlined />
-                        <BottomPostLikeCount>5 like(s)</BottomPostLikeCount>
+                        {
+                            isLiked ? <ThumbUp onClick={likePost} /> : <ThumbUpAltOutlined onClick={likePost} />
+                        }
+                        <BottomPostLikeCount>{like} like(s)</BottomPostLikeCount>
                     </BottomPostLike>
                     <BottomPostComment>5 comment(s)</BottomPostComment>
                 </BottomPost>

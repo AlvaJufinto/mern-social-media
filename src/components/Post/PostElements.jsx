@@ -59,9 +59,9 @@ export const MiddlePostDescription = styled.div`
 
 export const MiddlePostImg = styled.img`
     width: 100%;
-    height: 300px;
+    min-height: 300px;
     object-fit: contain;
-    `
+`
 
 export const BottomPost = styled.div`
     display: flex;
