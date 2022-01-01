@@ -21,7 +21,7 @@ export const NavbarTop = styled.nav`
 `
 
 export const NavbarContainer = styled.div`
-    width: ${GlobalMeasurement.containerWidth};
+    width: ${GlobalMeasurement.containerWidth}px;
     display: flex;
     justify-content: center;
     align-items: center;

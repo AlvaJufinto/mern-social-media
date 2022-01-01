@@ -38,7 +38,7 @@ const Navbar = () => {
                     <NavbarCenter>
                         <Search />
                         <NavbarSearchBar    
-                            placeholder="Search for users"
+                            placeholder="Search for users..."
                             type="text" />
                     </NavbarCenter>
                     <NavbarRight>

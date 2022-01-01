@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
 export const HomeSection = styled.div`
@@ -16,7 +17,7 @@ export const HomeSection = styled.div`
 
 export const HomeContainer = styled.div`
     min-height: 100vh;
-    width: ${GlobalMeasurement.containerWidth};
+    width: ${GlobalMeasurement.containerWidth}px;
     display: flex;
     position: relative;
 `

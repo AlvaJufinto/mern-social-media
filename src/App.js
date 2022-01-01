@@ -12,6 +12,7 @@ const App = () => {
       {/* <SignUp />   */}
       {/* <SignIn /> */}
       {/* <Home /> */}
+      <Profile />
     </>
   );
 }
