@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import {
     MoreVert, 
@@ -41,7 +40,7 @@ const Post = () => {
     }
 
     return ( 
-        <Router>
+        <>
             <PostStyled>
                 <TopPost>
                     <TopPostDescription>
@@ -67,7 +66,7 @@ const Post = () => {
                     <BottomPostComment>5 comment(s)</BottomPostComment>
                 </BottomPost>
             </PostStyled>   
-        </Router>
+        </>
      );
 }
  

@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
 import { 
@@ -18,7 +16,7 @@ import {
 
 const SignUp = () => {
     return ( 
-        <Router>
+        <>
             <SignUpWrapper>
                 <SignUpContainer>
                     <SignUpContainerTop>
@@ -47,7 +45,7 @@ const SignUp = () => {
                     </SignUpNoAccountContainer>
                 </SignUpContainer>
             </SignUpWrapper>
-        </Router>
+        </>
      );
 }
  

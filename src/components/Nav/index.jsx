@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Search, Logout, SearchRounded, HomeRounded, ChatRounded } from '@mui/icons-material';
 
 import {
@@ -28,7 +28,7 @@ const Navbar = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     return (
-        <Router>
+        <>
             <NavbarTop>
                 <NavbarContainer>
                     <NavbarTitle to="/">
@@ -112,7 +112,7 @@ const Navbar = () => {
                     <NavbarBottomImage src={noAvatar} />
                 </Link>
             </NavbarBottom>
-        </Router>
+        </>
      );
 }
  

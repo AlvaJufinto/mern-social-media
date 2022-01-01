@@ -1,4 +1,5 @@
 import { GlobalStyles } from "./globals";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
@@ -7,13 +8,13 @@ import Profile from "./pages/Profile";
 
 const App = () => {
   return (
-    <>
+    <Router>
       <GlobalStyles />
       {/* <SignUp />   */}
       {/* <SignIn /> */}
       {/* <Home /> */}
       <Profile />
-    </>
+    </Router>
   );
 }
 

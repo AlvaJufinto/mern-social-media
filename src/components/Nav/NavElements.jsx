@@ -63,7 +63,6 @@ export const NavbarCenter = styled.div`
 export const NavbarSearchBar = styled.input`
     border: none;
     outline: none;
-    width: 100%;
     margin: 0px 10px;
     background: ${GlobalColors.white};
     color: ${GlobalColors.black};
@@ -71,7 +70,7 @@ export const NavbarSearchBar = styled.input`
 
 export const NavbarRight = styled.div`
     margin: 0px 0px 0px 20px;
-    min-width: ${GlobalMeasurement.sidebarWidth}px;
+    width: ${GlobalMeasurement.sidebarWidth}px;
     display: flex;
     justify-content: space-between;
     align-items: center;

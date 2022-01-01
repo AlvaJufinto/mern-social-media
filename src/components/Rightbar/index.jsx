@@ -1,4 +1,3 @@
-import { BrowserRouter as Router } from "react-router-dom";
 import { LogoutRounded } from '@mui/icons-material';
 
 import { GlobalColors } from "../../globals";
@@ -18,7 +17,7 @@ import {
 
 const Rightbar = () => {
     return (
-        <Router>
+        <>
             <RightbarStyled>
                 <YourProfileProfileContainer>
                     <YourProfileImage src={noAvatar} />
@@ -69,7 +68,7 @@ const Rightbar = () => {
                     </SuggestionCards>
                 </SuggestionContainer>
             </RightbarStyled>   
-        </Router> 
+        </> 
      );
 }
  

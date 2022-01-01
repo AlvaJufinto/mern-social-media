@@ -1,29 +1,52 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from '../../components/Nav';
-import Sidebar from "../../components/Sidebar";
-import Feed from "../../components/Feed";
-import Rightbar from "../../components/Rightbar";
-
-import { LogoutRounded } from '@mui/icons-material';
-
 import { GlobalColors } from "../../globals";
+
+import Navbar from '../../components/Nav';
+import Feed from "../../components/Feed";
+
 import noAvatar from "../../assets/noAvatar.png";
+import noBanner from "../../assets/noBanner.jpg";
 
 import { 
     ProfileSection,
     ProfileContainer,
+    ProfileContainerLeft,
+    ProfileContainerLeftTop,
+    ProfileContainerLeftTopBanner,
+    ProfileContainerLeftTopUser,
+    ProfileContainerLeftTopPicture,
+    ProfileContainerLeftTopName,
+    ProfileContainerLeftBottom,
+    ProfileContainerLeftIntro,
+    ProfileContainerRight,
 } from './ProfileElements';
 
 const Profile = () => {
     return (
         <>
             <Navbar />
-            <Router>
-                <ProfileSection>
-                    <ProfileContainer>
-                    </ProfileContainer>  
-                </ProfileSection>
-            </Router> 
+            <ProfileSection>
+                <ProfileContainer>
+                    <ProfileContainerLeft>
+                        <ProfileContainerLeftTop>
+                            <ProfileContainerLeftTopBanner src={noBanner} />
+                            <ProfileContainerLeftTopUser>
+                                <ProfileContainerLeftTopPicture src={noAvatar} />
+                                <ProfileContainerLeftTopName>
+                                    <h3>s.alva_j</h3>
+                                    <p>Stanislaus Alva Jufinto</p>
+                                </ProfileContainerLeftTopName>
+                            </ProfileContainerLeftTopUser>
+                        </ProfileContainerLeftTop>
+                        <ProfileContainerLeftBottom>
+                            <ProfileContainerLeftIntro>
+
+                            </ProfileContainerLeftIntro>
+                            <Feed />
+                        </ProfileContainerLeftBottom>
+                    </ProfileContainerLeft>
+                    <ProfileContainerRight></ProfileContainerRight>
+                </ProfileContainer>  
+            </ProfileSection>
         </>
      );
 }
