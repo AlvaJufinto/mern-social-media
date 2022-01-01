@@ -1,5 +1,3 @@
-import { BrowserRouter as Router } from "react-router-dom";
-
 import { GlobalColors } from "../../globals";
 import noAvatar from "../../assets/noAvatar.png";
 
@@ -14,7 +12,7 @@ import {
 
 const Sidebar = () => {
     return (
-        <Router>
+        <>
             <SidebarStyled>
                 <FollowingContainer>
                     <FollowingTitle>Followings</FollowingTitle>
@@ -47,7 +45,7 @@ const Sidebar = () => {
                     </FollowingCards>
                 </FollowingContainer>
             </SidebarStyled>   
-        </Router> 
+        </> 
      );
 }
  

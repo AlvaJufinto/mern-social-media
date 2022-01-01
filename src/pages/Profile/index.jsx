@@ -1,4 +1,5 @@
 import { GlobalColors } from "../../globals";
+import { HomeRounded, PlaceRounded, WorkRounded, FavoriteRounded } from '@mui/icons-material';
 
 import Navbar from '../../components/Nav';
 import Feed from "../../components/Feed";
@@ -15,6 +16,7 @@ import {
     ProfileContainerLeftTopUser,
     ProfileContainerLeftTopPicture,
     ProfileContainerLeftTopName,
+    ProfileContainerLeftTopButton,
     ProfileContainerLeftBottom,
     ProfileContainerLeftIntro,
     ProfileContainerRight,
@@ -36,10 +38,15 @@ const Profile = () => {
                                     <p>Stanislaus Alva Jufinto</p>
                                 </ProfileContainerLeftTopName>
                             </ProfileContainerLeftTopUser>
+                            <ProfileContainerLeftTopButton>Edit Profile</ProfileContainerLeftTopButton>
                         </ProfileContainerLeftTop>
                         <ProfileContainerLeftBottom>
                             <ProfileContainerLeftIntro>
-
+                                <h1>Intro</h1>
+                                <p><HomeRounded /> City : Jakarta</p>
+                                <p><PlaceRounded /> From : Jakarta</p>
+                                <p><WorkRounded /> Work : Stark Industries</p>
+                                <p><FavoriteRounded />Relationship : Single</p>
                             </ProfileContainerLeftIntro>
                             <Feed />
                         </ProfileContainerLeftBottom>

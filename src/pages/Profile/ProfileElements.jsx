@@ -45,8 +45,8 @@ export const ProfileContainerLeftTopBanner = styled.img`
 
 export const ProfileContainerLeftTopUser = styled.div`
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 20px;
+    left: 20px;
     /* background: blue; */
     display: flex;
     align-items: center;
@@ -61,7 +61,10 @@ export const ProfileContainerLeftTopPicture = styled.img`
 
 export const ProfileContainerLeftTopName = styled.p`
     color: ${GlobalColors.white};
-
+    mix-blend-mode: exclusion;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dbdbdb;
+    font-weight: 800; */
     h3 {
         font-size: 42px;
     }
@@ -71,13 +74,51 @@ export const ProfileContainerLeftTopName = styled.p`
     }
 `
 
+export const ProfileContainerLeftTopButton = styled.button`
+    position: absolute;
+    color: ${GlobalColors.white};
+    background: ${GlobalColors.blue};
+    padding: 10px;
+    font-size: 24px;
+    outline: none;
+    border: none;
+    border-radius: ${GlobalMeasurement.squareBorderRadius}px;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+`
+
 export const ProfileContainerLeftBottom = styled.div`
-    
+    margin: 20px 0 0 0;
+    display: flex;
+    align-items: flex-start;
+    /* background: salmon; */
 `
 
 export const ProfileContainerLeftIntro = styled.div`
-    
+    background: ${GlobalColors.grey};
+    color: ${GlobalColors.white};
+    width: ${GlobalMeasurement.sidebarWidth}px;
+    height: auto;
+    margin: 0px 20px 0 0;
+    padding: 20px;
+    border-radius: ${GlobalMeasurement.squareBorderRadius}px;
+
+    h1 {
+        margin: 0 0 15px 0;
+    }
+
+    p {
+        display: flex;
+        gap: 10px;
+        margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+        display: none;      
+    }
 `
+
 
 export const ProfileContainerRight = styled.div`
     margin: 0px 0px 0px 20px;
