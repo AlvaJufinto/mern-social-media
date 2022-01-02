@@ -16,7 +16,6 @@ export const ProfileSection = styled.div`
 `
 
 export const ProfileContainer = styled.div`
-    /* background: green; */
     min-height: 100vh;
     width: ${GlobalMeasurement.containerWidth}px;
     display: flex;
@@ -24,14 +23,12 @@ export const ProfileContainer = styled.div`
 
 export const ProfileContainerLeft = styled.div`
     flex: 1;
-    /* background: red; */
 `
 
 export const ProfileContainerLeftTop = styled.div`
     position: relative;
     height: 300px;
     overflow: none;
-    /* border-radius: ${GlobalMeasurement.squareBorderRadius}px; */
     
     @media(max-width: 768px) {
         min-height: auto;
@@ -59,7 +56,6 @@ export const ProfileContainerLeftTopBanner = styled.img`
 `
 
 export const ProfileContainerLeftTopUser = styled.div`
-    /* background: blue; */
     width: 100%;
     position: absolute;
     z-index: 2;
@@ -88,8 +84,6 @@ export const ProfileContainerLeftTopPicture = styled.img`
 
 export const ProfileContainerLeftTopName = styled.p`
     color: ${GlobalColors.white};
-    /* background: red; */
-    /* mix-blend-mode: exclusion; */
     
     h3 {
         font-size: 42px;
@@ -137,7 +131,6 @@ export const ProfileContainerLeftBottom = styled.div`
     margin: 20px 0 0 0;
     display: flex;
     align-items: flex-start;
-    /* background: salmon; */
 `
 
 export const ProfileContainerLeftIntro = styled.div`

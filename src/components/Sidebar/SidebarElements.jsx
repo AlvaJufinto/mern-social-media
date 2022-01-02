@@ -25,7 +25,6 @@ export const FollowingContainer = styled.div`
 
 export const FollowingCards = styled.div`
     margin: 20px 20px 0px 0px;
-    /* background: ${GlobalColors.grey};    */
     border-radius: ${GlobalMeasurement.squareBorderRadius}px;
 `
 

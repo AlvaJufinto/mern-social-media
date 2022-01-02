@@ -6,7 +6,6 @@ import { GlobalColors, GlobalMeasurement } from "../../globals";
 import { ChatRounded } from '@mui/icons-material';
 
 export const UserFollowsSection = styled.nav`
-    /* background: violet; */
     color: white;
     margin: 0 0 50px 0;
 `
@@ -23,7 +22,6 @@ export const UserFollowsSectionCards = styled.div`
 `
 
 export const UserFollowsSectionCard = styled.div`
-    /* background: salmon; */
     color: white;
     display: flex;
     flex-direction: column;

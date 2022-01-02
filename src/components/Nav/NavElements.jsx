@@ -25,10 +25,8 @@ export const NavbarContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: orange; */
 
     @media (max-width: 1000px) {
-        /* padding: 0px 20px; */
         justify-content: space-between;
     }
 `
@@ -74,7 +72,6 @@ export const NavbarRight = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background: red; */
 
     @media (max-width: 1000px) {
         display: none;

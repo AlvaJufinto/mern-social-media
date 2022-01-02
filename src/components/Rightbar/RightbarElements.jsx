@@ -55,7 +55,6 @@ export const SuggestionContainer = styled.div`
 
 export const SuggestionCards = styled.div`
     margin: 20px 0px 0px 0px;
-    /* background: ${GlobalColors.grey};    */
     border-radius: ${GlobalMeasurement.squareBorderRadius}px;
 `
 
