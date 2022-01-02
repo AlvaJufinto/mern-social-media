@@ -20,7 +20,6 @@ export const ProfileContainer = styled.div`
     min-height: 100vh;
     width: ${GlobalMeasurement.containerWidth}px;
     display: flex;
-    position: relative;
 `
 
 export const ProfileContainerLeft = styled.div`
@@ -33,6 +32,22 @@ export const ProfileContainerLeftTop = styled.div`
     height: 300px;
     overflow: none;
     /* border-radius: ${GlobalMeasurement.squareBorderRadius}px; */
+    
+    @media(max-width: 768px) {
+        min-height: auto;
+        height: ${({ height }) =>  height + 40 }px;
+
+    }
+`
+
+export const ProfileContainerLeftTopOverlay = styled.div`
+    height: 100%;
+    width: 100%;
+    position: absolute; 
+    background-color: ${GlobalColors.black};
+    top: 0;
+    left: 0;
+    opacity: 0.5;
 `
 
 export const ProfileContainerLeftTopBanner = styled.img`
@@ -44,12 +59,20 @@ export const ProfileContainerLeftTopBanner = styled.img`
 `
 
 export const ProfileContainerLeftTopUser = styled.div`
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
     /* background: blue; */
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    left: 0px;
+    padding: 20px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 
 export const ProfileContainerLeftTopPicture = styled.img`
@@ -57,25 +80,45 @@ export const ProfileContainerLeftTopPicture = styled.img`
     height: 180px;
     border-radius: 50%;
     margin: 0 30px 0 0;
+
+    @media (max-width: 768px) {
+        margin: 0;
+    }
 `
 
 export const ProfileContainerLeftTopName = styled.p`
     color: ${GlobalColors.white};
-    mix-blend-mode: exclusion;
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #dbdbdb;
-    font-weight: 800; */
+    /* background: red; */
+    /* mix-blend-mode: exclusion; */
+    
     h3 {
         font-size: 42px;
     }
 
+    h4 {
+        font-weight: 400;
+        font-size: 24px;
+    }
+
     p {
-        font-size: 28px;
+        font-size: 18px;
+        width: 25vw;
+    }
+
+    @media(max-width: 768px) {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0px;
+        
+        p {
+            width: auto;
+        }
     }
 `
 
 export const ProfileContainerLeftTopButton = styled.button`
-    position: absolute;
+    margin-left: auto;
+    margin-top: auto;
     color: ${GlobalColors.white};
     background: ${GlobalColors.blue};
     padding: 10px;
@@ -83,9 +126,11 @@ export const ProfileContainerLeftTopButton = styled.button`
     outline: none;
     border: none;
     border-radius: ${GlobalMeasurement.squareBorderRadius}px;
-    right: 20px;
-    bottom: 20px;
     cursor: pointer;
+
+    @media(max-width: 768px) {
+        width: 100%;
+    }
 `
 
 export const ProfileContainerLeftBottom = styled.div`
@@ -108,10 +153,14 @@ export const ProfileContainerLeftIntro = styled.div`
         margin: 0 0 15px 0;
     }
 
-    p {
+    p, a {
         display: flex;
         gap: 10px;
         margin: 5px 0;
+    }
+    
+    a {
+        color: ${GlobalColors.blue};
     }
 
     @media (max-width: 768px) {
@@ -123,7 +172,6 @@ export const ProfileContainerLeftIntro = styled.div`
 export const ProfileContainerRight = styled.div`
     margin: 0px 0px 0px 20px;
     width: ${GlobalMeasurement.sidebarWidth}px;
-    background: orange;
 
     @media (max-width: 1000px) {
         display: none;

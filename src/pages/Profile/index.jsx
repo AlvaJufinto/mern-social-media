@@ -1,8 +1,11 @@
+import { useResizeDetector } from 'react-resize-detector';
+
 import { GlobalColors } from "../../globals";
-import { HomeRounded, PlaceRounded, WorkRounded, FavoriteRounded } from '@mui/icons-material';
+import { HomeRounded, PlaceRounded, WorkRounded, FavoriteRounded, Link as LinkIcon } from '@mui/icons-material';
 
 import Navbar from '../../components/Nav';
 import Feed from "../../components/Feed";
+import UserFollows from "../../components/UserFollows";
 
 import noAvatar from "../../assets/noAvatar.png";
 import noBanner from "../../assets/noBanner.jpg";
@@ -12,6 +15,7 @@ import {
     ProfileContainer,
     ProfileContainerLeft,
     ProfileContainerLeftTop,
+    ProfileContainerLeftTopOverlay,
     ProfileContainerLeftTopBanner,
     ProfileContainerLeftTopUser,
     ProfileContainerLeftTopPicture,
@@ -23,22 +27,26 @@ import {
 } from './ProfileElements';
 
 const Profile = () => {
+    const { height:childHeight, ref:childRef } = useResizeDetector();
+
     return (
         <>
             <Navbar />
             <ProfileSection>
                 <ProfileContainer>
                     <ProfileContainerLeft>
-                        <ProfileContainerLeftTop>
+                        <ProfileContainerLeftTop height={childHeight} >
+                            <ProfileContainerLeftTopOverlay></ProfileContainerLeftTopOverlay>
                             <ProfileContainerLeftTopBanner src={noBanner} />
-                            <ProfileContainerLeftTopUser>
-                                <ProfileContainerLeftTopPicture src={noAvatar} />
+                            <ProfileContainerLeftTopUser ref={childRef} >
+                                <ProfileContainerLeftTopPicture src={noAvatar}  />
                                 <ProfileContainerLeftTopName>
                                     <h3>s.alva_j</h3>
-                                    <p>Stanislaus Alva Jufinto</p>
+                                    <h4>Stanislaus Alva Jufinto</h4>
+                                    <p>Not a perfect programmer, but a good guy</p>
                                 </ProfileContainerLeftTopName>
+                                <ProfileContainerLeftTopButton>Edit Profile</ProfileContainerLeftTopButton>
                             </ProfileContainerLeftTopUser>
-                            <ProfileContainerLeftTopButton>Edit Profile</ProfileContainerLeftTopButton>
                         </ProfileContainerLeftTop>
                         <ProfileContainerLeftBottom>
                             <ProfileContainerLeftIntro>
@@ -47,11 +55,21 @@ const Profile = () => {
                                 <p><PlaceRounded /> From : Jakarta</p>
                                 <p><WorkRounded /> Work : Stark Industries</p>
                                 <p><FavoriteRounded />Relationship : Single</p>
+                                <a 
+                                    target="_blank" 
+                                    href="https://github.com/AlvaJufinto/">
+                                        <LinkIcon style={{
+                                            color: 'white'
+                                        }} />Website
+                                </a>
                             </ProfileContainerLeftIntro>
                             <Feed />
                         </ProfileContainerLeftBottom>
                     </ProfileContainerLeft>
-                    <ProfileContainerRight></ProfileContainerRight>
+                    <ProfileContainerRight>
+                        <UserFollows title="User Followings" />
+                        <UserFollows title="User Followers" />
+                    </ProfileContainerRight>
                 </ProfileContainer>  
             </ProfileSection>
         </>
