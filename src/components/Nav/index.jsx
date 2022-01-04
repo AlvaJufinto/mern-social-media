@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Logout, SearchRounded, HomeRounded, ChatRounded } from '@mui/icons-material';
+import { Search, Logout, HomeRounded, ChatRounded, ExploreRounded } from '@mui/icons-material';
 
 import {
     NavbarTop,
@@ -50,7 +50,7 @@ const Navbar = () => {
                                 }} />
                             </NavbarLink>
                             <NavbarLink to="/explore" exact>
-                                <SearchRounded style={{
+                                <ExploreRounded style={{
                                     color: 'white',
                                     fontSize: '25'
                                 }} />
@@ -98,7 +98,7 @@ const Navbar = () => {
                     }} />
                 </Link>
                 <Link to="/explore">
-                    <SearchRounded style={{
+                    <ExploreRounded style={{
                         color: 'white',
                         fontSize: '30'
                     }} />

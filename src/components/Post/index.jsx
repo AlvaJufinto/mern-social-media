@@ -63,7 +63,7 @@ const Post = () => {
                         }
                         <BottomPostLikeCount>{like} like(s)</BottomPostLikeCount>
                     </BottomPostLike>
-                    <BottomPostComment>5 comment(s)</BottomPostComment>
+                    <BottomPostComment to="/post/:id">5 comment(s)</BottomPostComment>
                 </BottomPost>
             </PostStyled>   
         </>

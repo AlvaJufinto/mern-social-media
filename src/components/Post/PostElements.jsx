@@ -80,6 +80,8 @@ export const BottomPostLikeCount = styled.p`
     margin: 0px 15px;
 `
 
-export const BottomPostComment = styled.p`
+export const BottomPostComment = styled(Link)`
     border-bottom: 1px dashed ${GlobalColors.white};
+    color: ${GlobalColors.white};
+    text-decoration: none;
 `
