@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
-export const ExploreSection = styled.div`
+export const PostPageSection = styled.div`
     min-height: 100vh;
     background: ${GlobalColors.black};
     margin: ${GlobalMeasurement.navbarHeight}px 0 0 0;
@@ -17,7 +17,7 @@ export const ExploreSection = styled.div`
     }
 `
 
-export const ExploreContainer = styled.div`
+export const PostPageContainer = styled.div`
     height: auto;
     width: ${GlobalMeasurement.containerWidth}px;
     display: flex;
@@ -25,7 +25,7 @@ export const ExploreContainer = styled.div`
     gap: 10px;
     /* background: orange; */
 `
-export const ExploreCardOverlay = styled.div`
+export const PostPageCardOverlay = styled.div`
     position: absolute;
     height: 100%;
     width: 100%;
@@ -38,19 +38,19 @@ export const ExploreCardOverlay = styled.div`
     gap: 10px;
 `
 
-export const ExploreCard = styled(Link)`
+export const PostPageCard = styled(Link)`
     background: red;
     height: 250px;
     width: 250px;
     flex-grow: 1;
     position: relative;
 
-    &:hover ${ExploreCardOverlay} {
+    &:hover ${PostPageCardOverlay} {
         opacity: 0.5;
     }
 `
 
-export const ExploreCardContentImg = styled.img`
+export const PostPageCardContentImg = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;

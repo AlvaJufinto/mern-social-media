@@ -82,6 +82,7 @@ export const NavbarLinkContainer = styled.div`
     width: 45%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `
 
 export const NavbarLink = styled(Link)`

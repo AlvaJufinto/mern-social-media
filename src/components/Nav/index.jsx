@@ -46,7 +46,7 @@ const Navbar = () => {
                             <NavbarLink to="/">
                                  <HomeRounded style={{
                                     color: 'white',
-                                    fontSize: '25'
+                                    fontSize: '30'
                                 }} />
                             </NavbarLink>
                             <NavbarLink to="/explore" exact>
