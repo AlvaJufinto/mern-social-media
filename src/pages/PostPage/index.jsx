@@ -1,7 +1,9 @@
 import { useState } from "react";
 import {
-    ThumbUp, 
-    ChatBubbleRounded
+    ThumbUp,
+    ChatBubbleRounded,
+    ThumbUpAltOutlined, 
+    MoreVert,
 } from '@mui/icons-material';
 
 import Navbar from '../../components/Nav';
@@ -19,7 +21,19 @@ import {
 import noBanner from "../../assets/noBanner.jpg"; 
 
 const PostPage = () => {
-    let items = ['1','2','3','4','1'];
+    const [like, setLike] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+
+    const likePost = () => {
+        if(isLiked) {
+            setLike(like - 1);
+            setIsLiked(!isLiked);
+        } else {
+            setLike(like + 1);
+            setIsLiked(!isLiked);
+        }
+    }
+
 
     return ( 
         <>  
@@ -27,6 +41,26 @@ const PostPage = () => {
             <PostPageSection>
                 <PostPageContainer>
                     <PostPageCard>
+                        <PostPageCardTop>
+                            <PostPageCardTopProfPic />
+                            <PostCardTopUsername>alva.jufinto</PostCardTopUsername>
+                        </PostPageCardTop>
+                        <PostPageCardDesc>Ay yo my first post</PostPageCardDesc>
+                        <PostPageCardImg src={noBanner} />
+                        <PostPageCardInfo>
+                            <p>
+                                {
+                                    isLiked ? <ThumbUp onClick={likePost} /> : <ThumbUpAltOutlined onClick={likePost} />
+                                } 
+                                {like} like(s)
+                            </p>
+                            <p>0 comments</p>
+                        </PostPageCardInfo>
+                        <PostPageCardComments>
+                            <PostPageCardComment>
+                                
+                            </PostPageCardComment>
+                        </PostPageCardComments>
                     </PostPageCard>   
                 </PostPageContainer>
             </PostPageSection>
