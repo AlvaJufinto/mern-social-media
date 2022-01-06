@@ -15,8 +15,9 @@ const App = () => {
       {/* <SignUp />   */}
       {/* <SignIn /> */}
       {/* <Home /> */}
+      {/* <Explore /> */}
       {/* <Profile /> */}
-      <Explore />
+      <PostPage />
     </Router>
   );
 }

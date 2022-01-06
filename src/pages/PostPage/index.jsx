@@ -15,10 +15,19 @@ import {
     PostPageSection,
     PostPageContainer,
     PostPageCard,
-    PostPageCardContentImg,
+    PostPageCardTop,
+    PostPageCardTopProfPic,
+    PostPageCardTopUsername,
+    PostPageCardDesc,
+    PostPageCardImg,
+    PostPageCardInfo,
+    PostPageCardComments,
+    PostPageCardComment,
+
 } from "./PostPageElements";
 
 import noBanner from "../../assets/noBanner.jpg"; 
+import noAvatar from "../../assets/noAvatar.png"; 
 
 const PostPage = () => {
     const [like, setLike] = useState(0);
@@ -34,6 +43,11 @@ const PostPage = () => {
         }
     }
 
+    const cardInfoStyle = {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+    }
 
     return ( 
         <>  
@@ -42,23 +56,27 @@ const PostPage = () => {
                 <PostPageContainer>
                     <PostPageCard>
                         <PostPageCardTop>
-                            <PostPageCardTopProfPic />
-                            <PostCardTopUsername>alva.jufinto</PostCardTopUsername>
+                            <PostPageCardTopProfPic src={noAvatar} />
+                            <PostPageCardTopUsername to="/user/:id" >alva.jufinto</PostPageCardTopUsername>
+                            <p>3 days ago</p>
+                            <MoreVert style={{
+                                marginLeft: 'auto'
+                            }} />
                         </PostPageCardTop>
                         <PostPageCardDesc>Ay yo my first post</PostPageCardDesc>
                         <PostPageCardImg src={noBanner} />
                         <PostPageCardInfo>
-                            <p>
+                            <p style={cardInfoStyle}>
                                 {
                                     isLiked ? <ThumbUp onClick={likePost} /> : <ThumbUpAltOutlined onClick={likePost} />
                                 } 
                                 {like} like(s)
                             </p>
-                            <p>0 comments</p>
+                            <p style={cardInfoStyle}>0 comments</p>
                         </PostPageCardInfo>
                         <PostPageCardComments>
                             <PostPageCardComment>
-                                
+
                             </PostPageCardComment>
                         </PostPageCardComments>
                     </PostPageCard>   

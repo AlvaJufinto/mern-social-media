@@ -18,41 +18,78 @@ export const PostPageSection = styled.div`
 `
 
 export const PostPageContainer = styled.div`
-    height: auto;
     width: ${GlobalMeasurement.containerWidth}px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    /* background: orange; */
-`
-export const PostPageCardOverlay = styled.div`
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    background: ${GlobalColors.black};
-    display: flex;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    min-height: 100vh;
 `
 
-export const PostPageCard = styled(Link)`
-    background: red;
-    height: 250px;
-    width: 250px;
+
+export const PostPageCard = styled.div`
+    background: ${GlobalColors.grey};
+    width: auto;
+    min-height: 200px;
     flex-grow: 1;
     position: relative;
-
-    &:hover ${PostPageCardOverlay} {
-        opacity: 0.5;
-    }
+    color: white;
+    padding: 20px;
+    border-radius: ${GlobalMeasurement.squareBorderRadius}px;
 `
 
-export const PostPageCardContentImg = styled.img`
+export const PostPageCardTop = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+`
+
+export const PostPageCardTopProfPic = styled.img`
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+`
+
+export const PostPageCardTopUsername = styled(Link)`
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+`
+
+export const PostPageCardDesc = styled.p`
+    margin: 20px 0px;
+`
+
+export const PostPageCardImg = styled.img`
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: center;
 `
+
+export const PostPageCardInfo = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+`
+
+export const PostPageCardComments = styled.div`
+    
+
+`
+
+export const PostPageCardComment = styled.div`
+    
+`
+
+export const PostPageCardCommentUser = styled.div`
+
+`
+
+export const PostPageCardCommmentUsername = styled.div`
+    
+`
+
+export const PostPageCardCommentUserProfPic = styled.img`
+    
+`
+
+
