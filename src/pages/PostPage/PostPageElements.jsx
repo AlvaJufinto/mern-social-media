@@ -7,7 +7,7 @@ export const PostPageSection = styled.div`
     min-height: 100vh;
     background: ${GlobalColors.black};
     margin: ${GlobalMeasurement.navbarHeight}px 0 0 0;
-    padding: 20px 20px 0px 20px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -72,31 +72,69 @@ export const PostPageCardInfo = styled.div`
 `
 
 export const PostPageCardComments = styled.div`
-    height: 500px;
-    background: ${GlobalColors.black};
+    height: 400px;
+    /* background: ${GlobalColors.black}; */
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
 
 export const PostPageCardComment = styled.div`
-    
+    margin: 50px 0px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
 `
 
-export const PostPageCardCommentUser = styled.div`
-
-`
-
-export const PostPageCardCommmentUsername = styled.div`
-    
-`
-
-export const PostPageCardCommentUserProfPic = styled.img`
-    
-`
-
-export const PostPageCardCommentImg = styled.img`
-    
-`
 
 export const PostPageCommentContainer = styled.div`
     
 `
 
+export const PostPageCardCommmentUsername = styled(Link)`
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`
+
+
+export const PostPageCardCommentImg = styled.img`
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+`
+
+
+export const PostPageCommentForm = styled.div`
+    display: flex;
+    align-items: center;
+    height: 50px;
+    overflow: hidden;
+    border-radius: ${GlobalMeasurement.squareBorderRadius}px;
+`
+
+export const PostPageCommentInput = styled.input`
+    width: 90%;
+    height: 100%;
+    outline: none;
+    border: none;
+    padding: 20px 10px;
+    background: ${GlobalColors.black};
+    color: white;
+`
+
+export const PostPageButton = styled.button`
+    width: 10%;
+    height: 100%;
+    background: ${GlobalColors.blue};
+    color: ${GlobalColors.white};
+    outline: none;
+    border: none;
+    font-size: 20px;
+`

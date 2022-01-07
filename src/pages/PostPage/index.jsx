@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     ThumbUp,
     ChatBubbleRounded,
@@ -6,10 +7,9 @@ import {
     MoreVert,
 } from '@mui/icons-material';
 
+import { GlobalColors, GlobalMeasurement } from "../../globals";
+
 import Navbar from '../../components/Nav';
-import Sidebar from "../../components/Sidebar";
-import Feed from "../../components/Feed";
-import Rightbar from "../../components/Rightbar";
 
 import {
     PostPageSection,
@@ -24,7 +24,11 @@ import {
     PostPageCardComments,
     PostPageCardComment,
     PostPageCardCommentImg,
+    PostPageCardCommmentUsername,
     PostPageCommentContainer,
+    PostPageCommentForm,
+    PostPageCommentInput,
+    PostPageButton,
 } from "./PostPageElements";
 
 import noBanner from "../../assets/noBanner.jpg"; 
@@ -77,16 +81,146 @@ const PostPage = () => {
                         </PostPageCardInfo>
                         <PostPageCardComments>
                             <PostPageCardComment>
-                                <PostPageCardCommentImg />
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
                                 <PostPageCommentContainer>
-                                    <p>alva.jufinto</p>
-                                    <p>Damn nice post</p>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >alva.jufinto</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
+                                </PostPageCommentContainer>
+                            </PostPageCardComment>
+                            <PostPageCardComment>
+                                <Link to="/profile/:id" >
+                                    <PostPageCardCommentImg src={noAvatar} />
+                                </Link>
+                                <PostPageCommentContainer>
+                                    <PostPageCardCommmentUsername to="/profile/:id" >s.alva_j</PostPageCardCommmentUsername>
+                                    <p style={{
+                                        backgroundColor: GlobalColors.black,
+                                        maxWidth: '100%',
+                                        padding: '10px',
+                                        borderRadius: GlobalMeasurement.squareBorderRadius,
+                                        margin: '15px 0 5px 0',
+                                    }}>damn nice post
+                                    </p>
+                                    <p>3 days ago</p>
                                 </PostPageCommentContainer>
                             </PostPageCardComment>
                         </PostPageCardComments>
-                        <PostPageCommentForn>
-                            
-                        </PostPageCommentForn>
+                        <PostPageCommentForm>
+                            <PostPageCommentInput placeholder="Add your commments" />
+                            <PostPageButton>Post</PostPageButton> 
+                        </PostPageCommentForm>
                     </PostPageCard>   
                 </PostPageContainer>
             </PostPageSection>
