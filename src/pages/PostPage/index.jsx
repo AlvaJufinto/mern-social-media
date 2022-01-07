@@ -218,7 +218,7 @@ const PostPage = () => {
                             </PostPageCardComment>
                         </PostPageCardComments>
                         <PostPageCommentForm>
-                            <PostPageCommentInput placeholder="Add your commments" />
+                            <PostPageCommentInput placeholder="Add your commment..." />
                             <PostPageButton>Post</PostPageButton> 
                         </PostPageCommentForm>
                     </PostPageCard>   

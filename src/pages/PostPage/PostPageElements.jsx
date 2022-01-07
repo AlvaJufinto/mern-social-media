@@ -82,7 +82,7 @@ export const PostPageCardComments = styled.div`
 `
 
 export const PostPageCardComment = styled.div`
-    margin: 50px 0px;
+    margin: 20px 0 50px 0;
     display: flex;
     gap: 10px;
     align-items: flex-start;
@@ -103,13 +103,11 @@ export const PostPageCardCommmentUsername = styled(Link)`
     }
 `
 
-
 export const PostPageCardCommentImg = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 50%;
 `
-
 
 export const PostPageCommentForm = styled.div`
     display: flex;
@@ -127,6 +125,7 @@ export const PostPageCommentInput = styled.input`
     padding: 20px 10px;
     background: ${GlobalColors.black};
     color: white;
+    font-size: 16px;
 `
 
 export const PostPageButton = styled.button`

@@ -62,9 +62,10 @@ export const NavbarSearchBar = styled.input`
     border: none;
     outline: none;
     margin: 0px 10px;
+    width: 100%;
     background: ${GlobalColors.white};
     color: ${GlobalColors.black};
-    `
+`
 
 export const NavbarRight = styled.div`
     margin: 0px 0px 0px 20px;
