@@ -72,8 +72,8 @@ export const PostPageCardInfo = styled.div`
 `
 
 export const PostPageCardComments = styled.div`
-    
-
+    height: 500px;
+    background: ${GlobalColors.black};
 `
 
 export const PostPageCardComment = styled.div`
@@ -92,4 +92,11 @@ export const PostPageCardCommentUserProfPic = styled.img`
     
 `
 
+export const PostPageCardCommentImg = styled.img`
+    
+`
+
+export const PostPageCommentContainer = styled.div`
+    
+`
 

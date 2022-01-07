@@ -23,7 +23,8 @@ import {
     PostPageCardInfo,
     PostPageCardComments,
     PostPageCardComment,
-
+    PostPageCardCommentImg,
+    PostPageCommentContainer,
 } from "./PostPageElements";
 
 import noBanner from "../../assets/noBanner.jpg"; 
@@ -76,9 +77,16 @@ const PostPage = () => {
                         </PostPageCardInfo>
                         <PostPageCardComments>
                             <PostPageCardComment>
-
+                                <PostPageCardCommentImg />
+                                <PostPageCommentContainer>
+                                    <p>alva.jufinto</p>
+                                    <p>Damn nice post</p>
+                                </PostPageCommentContainer>
                             </PostPageCardComment>
                         </PostPageCardComments>
+                        <PostPageCommentForn>
+                            
+                        </PostPageCommentForn>
                     </PostPageCard>   
                 </PostPageContainer>
             </PostPageSection>
