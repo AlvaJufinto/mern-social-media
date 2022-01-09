@@ -27,6 +27,10 @@ const UserSchema = new.mongoose.Schema({
         type: String,
         default: "",
     },
+    description: {
+        type: String,
+        max: 50,
+    },
     followers: {
         type: Array,
         default: [],
@@ -34,10 +38,6 @@ const UserSchema = new.mongoose.Schema({
     followings: {
         type: Array,
         default: [],
-    },
-    description: {
-        type: String,
-        max: 50,
     },
     city: {
         type: String,
@@ -47,8 +47,18 @@ const UserSchema = new.mongoose.Schema({
         type: String,
         max: 20,      
     },
+    work : {
+        type: String,
+        max: 20
+    },
     relationship: {
         type: String,
         max: 10,
+    },
+    website: {
+        type: String,
+        max: 10,
     }
-})
+});
+
+module.exports = mongoose.model("Post", PostSchema);
