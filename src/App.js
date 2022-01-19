@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Redirect
 } from "react-router-dom";
 
 import SignUp from "./pages/SignUp";
