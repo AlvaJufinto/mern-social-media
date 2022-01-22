@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react';
 import { CircularProgress } from "@material-ui/core";
-import { loginCall } from "../../apiCalls";
 import { AuthContext } from '../../context/AuthContext';
+import { loginCall } from "../../apiCalls";
 import { GlobalColors, GlobalMeasurement } from "../../globals";
 
 import { 
@@ -20,7 +20,7 @@ import {
 const SignIn = () => {
     const email = useRef();
     const password = useRef();
-    const { isFetching, dispatch, error } = useContext(AuthContext); 
+    const { isFetching, dispatch, error, errorMessage } = useContext(AuthContext); 
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -28,6 +28,7 @@ const SignIn = () => {
             { email: email.current.value, password: password.current.value },
             dispatch
         ); 
+        // console.log(errorMessage);
     };
 
     return ( 
@@ -38,7 +39,7 @@ const SignIn = () => {
                         <SignInContainerTopTitle>Synchronize</SignInContainerTopTitle>
                         <SignInContainerDescription>
                             Welcome back, buddy!
-                        </SignInContainerDescription>
+                        </SignInContainerDescription> 
                     </SignInContainerTop>
                     <SignInContainerBottom onSubmit={handleSubmit}>
                         <SignInContainerBottomInput 
@@ -50,6 +51,7 @@ const SignIn = () => {
                             type="password"
                             ref={password}
                         />
+                        {error && (<p style={{ color: GlobalColors.red }}>{errorMessage.data}</p>)}
                         <SignInContainerBottomButton>
                             { isFetching ? (
                                 <CircularProgress color="white" size="20px" />
@@ -59,11 +61,7 @@ const SignIn = () => {
                         </SignInContainerBottomButton>
                     </SignInContainerBottom>
                     <SignInNoAccountContainer>
-                        { error ? (
-                            error   
-                        ): (
-                            "Don't have an account?"
-                        )}
+                        Don't have an account? 
                         <SignInNoAccountLink 
                             to="/sign-up"
                             style={{ 

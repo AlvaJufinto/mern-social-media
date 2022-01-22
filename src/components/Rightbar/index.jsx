@@ -1,3 +1,5 @@
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { LogoutRounded } from '@mui/icons-material';
 
 import { GlobalColors } from "../../globals";
@@ -16,21 +18,23 @@ import {
 } from './RightbarElements';
 
 const Rightbar = () => {
+    const { user, dispatch } = useContext(AuthContext);
+
     return (
         <>
             <RightbarStyled>
                 <YourProfileProfileContainer>
                     <YourProfileImage src={noAvatar} />
                     <YourProfileName to="/profile/:id" >
-                        <p>will.scho_123</p>
-                        <p>William Schofield</p> 
+                        <p>{user.username}</p>
+                        <p>{user.fullname}</p> 
                     </YourProfileName>
                     <LogoutRounded style={{ 
                         fontSize: 30, 
                         color: GlobalColors.red, 
                         cursor: 'pointer', 
                         marginLeft: 'auto'
-                    }} />
+                    }} onClick={ () => dispatch({ type: "LOGOUT" }) } />
                 </YourProfileProfileContainer>
                 <SuggestionContainer>
                     <SuggestionTitle>Suggestions</SuggestionTitle>

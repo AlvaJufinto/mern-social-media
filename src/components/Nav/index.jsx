@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { Search, Logout, HomeRounded, ChatRounded, ExploreRounded } from '@mui/icons-material';
 
@@ -25,6 +26,7 @@ import noAvatar from "../../assets/noAvatar.png";
 import { GlobalColors } from "../../globals";
 
 const Navbar = () => {
+    const { user, dispatch } = useContext(AuthContext);
     const [isVisible, setIsVisible] = useState(false);
 
     return (
@@ -67,7 +69,7 @@ const Navbar = () => {
                             <ProfileOptions isVisible={isVisible}>
                                 <NavbarLink
                                     to="/profile/:id">
-                                    Profile
+                                    {user.username}
                                 </NavbarLink>
                                 <NavbarLink 
                                     style={{
@@ -77,8 +79,10 @@ const Navbar = () => {
                                         width: '50%',
                                         justifyContent: 'space-between'
                                     }}
-                                    to="/logout">
-                                    Logout <Logout />
+                                    to="/"
+                                    onClick={ () => dispatch({ type: "LOGOUT" })    } >
+                                    Logout 
+                                <Logout />
                                 </NavbarLink>
                             </ProfileOptions>
                         </ProfilePictureContainer>
