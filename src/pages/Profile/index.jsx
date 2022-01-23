@@ -1,7 +1,8 @@
-import { useResizeDetector } from 'react-resize-detector';
-
-import { GlobalColors } from "../../globals";
 import { HomeRounded, PlaceRounded, WorkRounded, FavoriteRounded, Link as LinkIcon } from '@mui/icons-material';
+import { useResizeDetector } from 'react-resize-detector';
+import { GlobalColors } from "../../globals";
+
+
 
 import Navbar from '../../components/Nav';
 import Feed from "../../components/Feed";

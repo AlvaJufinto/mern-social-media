@@ -1,4 +1,6 @@
 import { useContext, useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 import { GlobalColors, GlobalMeasurement } from "../../globals";
@@ -17,7 +19,8 @@ import {
 } from "./SignUpElements";
 
 const SignUp = () => {
-    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+    const [errors, setErrors] = useState([]);
 
     const username = useRef();
     const fullname = useRef();
@@ -34,8 +37,10 @@ const SignUp = () => {
         }
         try {
             await axios.post("/auth/register", userSignUp);
+            navigate('/');
         } catch (err) {
             // console.log(err.response.data.errors)
+            // setErrors(err.response);
             setErrors(err.response.data.errors);
             console.log(err.response.data.errors);
             console.log(errors);
@@ -73,14 +78,15 @@ const SignUp = () => {
                             <div style={{
                                 color: GlobalColors.red,
                             }}>
-                                {Object.keys(errors).map((errors) => (
-                                    <p>{errors}</p>
+                                {Object.keys(errors).map((key) => (
+                                    <p>{errors[key].message}</p>
                                 ))}
                             </div> 
                             ) : (
                                 ""
                             )
                         }
+                      
                         <SignUpContainerBottomButton>Sign up</SignUpContainerBottomButton>
                     </SignUpContainerBottom>
                     <SignUpNoAccountContainer>
