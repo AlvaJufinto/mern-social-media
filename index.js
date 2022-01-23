@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 // Route
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
 
 // Optional vars
 const morgan = require('morgan');

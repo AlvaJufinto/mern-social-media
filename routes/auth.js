@@ -5,16 +5,22 @@ const bcrypt = require('bcrypt');
 // Register 
 router.post("/register", async (req, res) => {
     try {
-        // Generate new password
-        const salt = await bcrypt.genSalt(10);
-        hashedPassword = await bcrypt.hash(req.body.password, salt);
+        // // Generate new password
+        // const salt =  await bcrypt.genSalt(10);
+        // hashedPassword = await bcrypt.hash(req.body.password, salt);
         
+        // const username = await User.findOne({ username: req.body.username });
+        // username && res.status(404).json("Username is taken");
+        
+        // const fullname = await User.findOne({ fullname: req.body.fullname });
+        // fullname && res.status(404).json("Fullname is taken");
+
         // Create new user
         const user = new User({
             username: req.body.username,
             fullname: req.body.fullname,
             email: req.body.email,
-            password: hashedPassword,
+            password: req.body.password,
         });
 
         // Save user and send respond
@@ -29,11 +35,16 @@ router.post("/register", async (req, res) => {
 // Login    
 router.post('/login', async (req, res) =>{
     try {
+        
         const user = await User.findOne({ email: req.body.email });
         !user && res.status(404).json("User not found");
 
-        const validPassword = await bcrypt.compare(req.body.password, user.password)
-        !validPassword && res.status(404).json("Wrong password");
+        console.log(user.password);
+        console.log(req.body.password);
+        
+        const userPassword = user.password;
+        const validPassword = userPassword.localeCompare(req.body.password);
+        validPassword && res.status(404).json("Wrong password");
 
         return res.status(200).json(user);
     } catch (err) {

@@ -4,26 +4,26 @@ const UserSchema = new mongoose.Schema({
         username: {
             type: String, 
             required: [true, 'Username is required'],
-            minLength: 3,
+            minLength: [6, 'Fullname atleast has 6 characters'],
             maxLength: 20,
-            unique: true,
+            // unique: [true, 'username is taken'],
         },
         fullname:{
             type: String,
             required: [true, 'Fullname is required'],
-            minLength: 6,
+            minLength: [6, 'Fullname atleast has 6 characters'],
             maxLength: 50,
         },
         email: {
             type: String,
             required: [true, 'Email is required'],
             maxLength: 50,
-            unique: true,
+            // unique: [true, 'Email is taken'],
         },
         password: {
             type: String,
             required: [true, 'Password is required'],
-            minLength: [6, "Password must be at least 6 characters"],
+            minLength: [6, 'Password atleast has 6 characters'],
         },
         profilePicture: {
             type: String,
