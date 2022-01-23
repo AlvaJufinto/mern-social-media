@@ -29,7 +29,7 @@ import {
 
 const Profile = () => {
     const { height:childHeight, ref:childRef } = useResizeDetector();
-
+    
     return (
         <>
             <Navbar />
