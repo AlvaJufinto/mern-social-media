@@ -68,7 +68,7 @@ const Navbar = () => {
                             <ProfilePictureImg src={noAvatar} />
                             <ProfileOptions isVisible={isVisible}>
                                 <NavbarLink
-                                    to="/profile/:id">
+                                    to={`/profile/${user.username}`}>
                                     {user.username}
                                 </NavbarLink>
                                 <NavbarLink 
@@ -112,7 +112,7 @@ const Navbar = () => {
                         fontSize: '30'
                     }} />
                 </Link>
-                <Link to="/profile/:id">
+                <Link to={`/profile/${user.username}`}>
                     <NavbarBottomImage src={noAvatar} />
                 </Link>
             </NavbarBottom>

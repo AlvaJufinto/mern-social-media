@@ -1,8 +1,11 @@
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 import { HomeRounded, PlaceRounded, WorkRounded, FavoriteRounded, Link as LinkIcon } from '@mui/icons-material';
+
 import { useResizeDetector } from 'react-resize-detector';
 import { GlobalColors } from "../../globals";
-
-
+import { AuthContext } from '../../context/AuthContext';
 
 import Navbar from '../../components/Nav';
 import Feed from "../../components/Feed";
@@ -28,8 +31,23 @@ import {
 } from './ProfileElements';
 
 const Profile = () => {
+    let { username } = useParams();  
+    // const { user:myUser } = useContext(AuthContext);
+    const [user, setUser] = useState();
     const { height:childHeight, ref:childRef } = useResizeDetector();
     
+    useEffect(() => {
+        const fetchUser = async () => { 
+            try {
+                const res = await axios.get(`/users?username=${username}`);
+                setUser(res.data);
+            } catch (e) {
+                console.log(e.response);
+            }
+        }
+        fetchUser();
+    }, [username])
+
     return (
         <>
             <Navbar />
@@ -42,9 +60,9 @@ const Profile = () => {
                             <ProfileContainerLeftTopUser ref={childRef} >
                                 <ProfileContainerLeftTopPicture src={noAvatar}  />
                                 <ProfileContainerLeftTopName>
-                                    <h3>s.alva_j</h3>
-                                    <h4>Stanislaus Alva Jufinto</h4>
-                                    <p>Not a perfect programmer, but a good guy</p>
+                                    {/* <h3>{user.username}</h3> */}
+                                    {/* <h4>{user.fullname}</h4> */}
+                                    {/* <p>{user.description}</p> */}
                                 </ProfileContainerLeftTopName>
                                 <ProfileContainerLeftTopButton>Edit Profile</ProfileContainerLeftTopButton>
                             </ProfileContainerLeftTopUser>
@@ -52,17 +70,20 @@ const Profile = () => {
                         <ProfileContainerLeftBottom>
                             <ProfileContainerLeftIntro>
                                 <h1>Intro</h1>
-                                <p><HomeRounded /> City : Jakarta</p>
-                                <p><PlaceRounded /> From : Jakarta</p>
-                                <p><WorkRounded /> Work : Stark Industries</p>
-                                <p><FavoriteRounded />Relationship : Single</p>
-                                <a 
-                                    target="_blank" 
-                                    href="https://github.com/AlvaJufinto/">
-                                        <LinkIcon style={{
-                                            color: 'white'
-                                        }} />Website
-                                </a>
+                                {user.city && <p><HomeRounded /> City : {user.city}</p>}
+                                {user.from && <p><PlaceRounded /> From : {user.from}</p>}
+                                {user.work && <p><WorkRounded /> Work : {user.work}</p>}
+                                {user.relationship && <p><FavoriteRounded />Relationship : {user.relationship}</p>}
+                                {user.website && 
+                                    <a 
+                                        target="_blank" 
+                                        href="https://github.com/AlvaJufinto/">
+                                            <LinkIcon style={{
+                                                color: 'white'
+                                            }} />Website
+                                    </a>
+                                }
+                                { !user.city && !user.from && !user.work && !user.relationship && !user.website && <p>No information is available for now 😞</p> }
                             </ProfileContainerLeftIntro>
                             <Feed />
                         </ProfileContainerLeftBottom>
