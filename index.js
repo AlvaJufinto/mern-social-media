@@ -41,7 +41,7 @@ mongoose.connect(
 );
 
 app.use("/api/auth", authRoute);
-// app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 app.listen(port, () => {
     console.log(`App is running at port ${port}`);
