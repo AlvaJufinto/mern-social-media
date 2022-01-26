@@ -25,7 +25,7 @@ const Rightbar = () => {
             <RightbarStyled>
                 <YourProfileProfileContainer>
                     <YourProfileImage src={noAvatar} />
-                    <YourProfileName to="/profile/:id" >
+                    <YourProfileName to={`/profile/${user.username}`}>
                         <p>{user.username}</p>
                         <p>{user.fullname}</p> 
                     </YourProfileName>
@@ -39,7 +39,7 @@ const Rightbar = () => {
                 <SuggestionContainer>
                     <SuggestionTitle>Suggestions</SuggestionTitle>
                     <SuggestionCards>
-                        <SuggestionCard to="/profile/:id" exact>
+                        <SuggestionCard to="/profile/:username">
                             <SuggestionImg src={noAvatar} />
                             <p>alva_jufinto</p>
                             <p style={{

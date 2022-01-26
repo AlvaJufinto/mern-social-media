@@ -84,7 +84,9 @@ export const ProfileContainerLeftTopPicture = styled.img`
 
 export const ProfileContainerLeftTopName = styled.p`
     color: ${GlobalColors.white};
-    
+    /* background: blue; */
+    width: 50%;
+
     h3 {
         font-size: 42px;
     }
@@ -99,6 +101,17 @@ export const ProfileContainerLeftTopName = styled.p`
         width: 25vw;
     }
 
+    .FollowsContainer {
+        margin: 10px 0px;
+        width: 100%;
+        /* background: red; */
+        display: flex;
+
+        span {
+            color: ${GlobalColors.blue}
+        }
+    }
+
     @media(max-width: 768px) {
         width: 100%;
         text-align: center;
@@ -106,6 +119,12 @@ export const ProfileContainerLeftTopName = styled.p`
         
         p {
             width: auto;
+        }
+
+        .FollowsContainer {
+            width: 100%;
+            justify-content: center;
+            gap: 20px;
         }
     }
 `
