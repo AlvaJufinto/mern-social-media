@@ -32,7 +32,7 @@ import {
 
 const Profile = () => {
     let { username } = useParams();  
-    // const { user:myUser, dispatch } = useContext(AuthContext);
+    const { user:myUser, dispatch } = useContext(AuthContext);
     const [user, setUser] = useState();
     const [isMyProfile, setIsMyProfile] = useState(false);
     const { height:childHeight, ref:childRef } = useResizeDetector();
@@ -49,11 +49,11 @@ const Profile = () => {
         fetchUser();
     }, [username])
 
-    useEffect(() => {
-        if(user.username == username) {
-            setIsMyProfile(true);
-        }
-    }, [username, user])
+    // useEffect(() => {
+    //     if(user.username == username) {
+    //         setIsMyProfile(true);
+    //     }
+    // }, [username, user])
 
     return (
         <>
@@ -75,7 +75,7 @@ const Profile = () => {
                                         <p><span>{user && user.followings.length}</span> Followers</p>
                                     </div>
                                 </ProfileContainerLeftTopName>
-                                <ProfileContainerLeftTopButton>Edit Profile</ProfileContainerLeftTopButton>
+                                { username == myUser.username ?  <ProfileContainerLeftTopButton>Edit Profile</ProfileContainerLeftTopButton> : "" }
                             </ProfileContainerLeftTopUser>
                         </ProfileContainerLeftTop>
                         <ProfileContainerLeftBottom>
