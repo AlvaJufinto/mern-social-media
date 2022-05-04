@@ -1,0 +1,51 @@
+.SignInContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SignInWrapper {
+    padding: 50px 30px;
+    max-width: 100%;
+    width: 500px;
+}
+
+.SignInWrapper__title {
+    font-size: 3rem;
+}
+.SignInWrapper__description {
+    font-size: 1.5rem;
+    margin: 0 0 50px 0;;
+}
+.SignInWrapper__title, .SignInWrapper__description {
+    text-align: center;
+}   
+
+.SignIn__input-group {
+    margin: 40px 0;
+}
+.SignIn__input-group__Name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 10px 0; 
+}
+.SignIn__input-group__wrapper i {
+    font-size: 2rem;
+}
+.SignIn__input-text {
+    font-size: 1.25rem;
+}
+
+.SignIn__submit-button {
+    width: 100%;
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .SignInWrapper {
+        border: none !important;
+    }
+}

@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --white: white;
+    --black: #000000;
+    --grey: #E6E6E6;
+    --violet : #6445FF;
+    --light-violet: #EBEEFF;
+    --red: #FF4545;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    background: var(--white);
+    min-height: 100vh;
+}
+
+/* width */
+/* ::-webkit-scrollbar {
+  width: 10px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: var(--white);
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: var(--orange);
+  border-radius: 6px;
+} */
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.button-global {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--violet);
+  color: var(--white);
+  user-select: none;
+} 
+
+/* .button-global:hover {
+  box-shadow: 2px 2px 20px var(--blue);
+} */
+
+.section-global {
+  max-width: 1280px;
+  padding: 10px 5%;
+}
+
+.input-wrapper-global {
+  border: 1px solid var(--grey);
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.input-text-global {
+  border: none;
+  outline: none;
+}
+
+.container-border-global {
+  border: 1px solid var(--light-violet);
+  border-radius: 10px;
+}

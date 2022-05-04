@@ -6,13 +6,18 @@ import {
   Navigate
 } from "react-router-dom";
 
+import SignIn from "./pages/SignIn";
+
+import './styles/globals.css';
+
 const App = () => {
 
   return (
-    <Router>
-      <Routes>
-      </Routes>
-    </Router>
+    // <Router>
+    //   <Routes>
+    //   </Routes>
+    // </Router>
+    <SignIn />
   );
 }
 
