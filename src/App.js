@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { GlobalStyles } from "./globals";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,12 +6,10 @@ import {
   Navigate
 } from "react-router-dom";
 
-
 const App = () => {
 
   return (
     <Router>
-      <GlobalStyles />
       <Routes>
       </Routes>
     </Router>
