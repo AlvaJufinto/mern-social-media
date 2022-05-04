@@ -6,7 +6,7 @@ import {
   Navigate
 } from "react-router-dom";
 
-import './../styles/pages-css/sign-in-up.css';
+import './../styles/pages-css/auth.css';
 
 const SignIn = () => {
 
