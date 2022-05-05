@@ -1,0 +1,48 @@
+.NavbarWrapper {
+    width: 100%;
+    background-color: var(--light-violet);
+}
+
+.NavbarContainer {
+    padding: 5px 1% !important;
+    margin: auto;
+    /* background-color: var(--light-violet); */
+    /* background-color: lightblue; */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.Navbar__logo {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+.Navbar__search-container {
+    /* background-color: red; */
+    width: 700px;
+    max-width: 100%;
+    border-radius: 50px !important;
+    border: none !important;
+    background-color: white;
+}
+
+.Navbar__ProfileContainer__img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.Navbar__links-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Navbar__links-container__Navigations {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+.Navbar__links-container__ProfileContainer a {
+    display: flex;
+    align-items: center;
+}

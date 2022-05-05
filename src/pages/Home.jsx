@@ -3,14 +3,19 @@ import {
   Link
 } from "react-router-dom";
 
-import './../styles/pages-css/auth.css';
+import Navbar from "../components/Navbar";
+
+import './../styles/pages-css/home.css';
 
 const Home = () => {
 
   return (
-    <div className="HomeContainer">
-      
-    </div>
+    <>
+      <Navbar />
+      <div className="HomeContainer">
+        
+      </div>
+    </>
   );
 }
 
