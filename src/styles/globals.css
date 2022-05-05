@@ -52,6 +52,7 @@ a {
   background-color: var(--violet);
   color: var(--white);
   user-select: none;
+  box-shadow: 0 2px 20px rgba(100, 69, 255, 0.3);
 } 
 
 /* .button-global:hover {
@@ -66,10 +67,10 @@ a {
 .input-wrapper-global {
   border: 1px solid var(--grey);
   border-radius: 10px;
-  padding: 15px;
+  padding: 12px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .input-text-global {
   border: none;

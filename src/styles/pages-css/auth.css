@@ -1,51 +1,61 @@
-.SignInContainer {
+.AuthContainer {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.SignInWrapper {
+.AuthWrapper {
     padding: 50px 30px;
     max-width: 100%;
-    width: 500px;
+    width: 400px;
 }
 
-.SignInWrapper__title {
+.AuthWrapper__title {
     font-size: 3rem;
 }
-.SignInWrapper__description {
-    font-size: 1.5rem;
-    margin: 0 0 50px 0;;
+.AuthWrapper__description {
+    font-size: 1.25rem;
+    margin: 0 0 60px 0;
 }
-.SignInWrapper__title, .SignInWrapper__description {
+.AuthWrapper__title, .AuthWrapper__description {
     text-align: center;
 }   
 
-.SignIn__input-group {
-    margin: 40px 0;
+.Auth__input-group {
+    margin: 20px 0;
 }
-.SignIn__input-group__Name {
-    font-size: 1.25rem;
+.Auth__input-group__Name {
+    font-size: 1rem;
     font-weight: 800;
     margin: 0 0 10px 0; 
 }
-.SignIn__input-group__wrapper i {
-    font-size: 2rem;
+.Auth__input-group__wrapper i {
+    font-size: 1.5rem;
 }
-.SignIn__input-text {
-    font-size: 1.25rem;
+.Auth__input-text {
+    font-size: 1.2rem;
+    flex: 1;
 }
 
-.SignIn__submit-button {
+.Auth__submit-button {
+    margin: 20px 0 0 0;
     width: 100%;
     height: 60px;
     font-size: 1.5rem;
 }
 
+.Auth__optional-link {
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+
+.Auth__optional-link a {
+    color: var(--violet);
+}
 
 @media (max-width: 768px) {
-    .SignInWrapper {
+    .AuthWrapper {
         border: none !important;
     }
 }
