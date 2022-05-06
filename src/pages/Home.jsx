@@ -5,6 +5,7 @@ import {
 
 import Navbar from "../components/Navbar";
 import AddPost from "../components/AddPost";
+import Post from "../components/Post";
 import noAvatar from "./../assets/img/noAvatar.png";
 
 import './../styles/pages-css/home.css';
@@ -22,13 +23,16 @@ const Home = () => {
               <Link to="/:username" >
                 <img className="UserList-global__image" src={noAvatar} alt="bruh" />
               </Link>
-              <h3 className="UserList-global__username">Alfie Solomons</h3>
+              <h3 className="UserList-global__username" title="Alfie Solomons">Alfie Solomons</h3>
               <p className="Home__UserList__addition UserList-global__addition">Follow</p>
             </div>
           </div>
         </div>
         <div className="Home__middle-side middle-section-global">
           <AddPost />
+          <div className="Home__middle-side__post-containers">
+            <Post />
+          </div>
         </div>
         <div className="Home__right-side right-section-global">
           asdsad

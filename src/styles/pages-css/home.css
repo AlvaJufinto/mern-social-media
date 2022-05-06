@@ -7,3 +7,7 @@
 .Home__UserList__addition {
     color: var(--violet);
 }
+
+.Home__middle-side__post-containers {
+    margin: 20px 0;
+}

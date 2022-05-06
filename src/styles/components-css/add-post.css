@@ -3,6 +3,7 @@
     border-radius: 10px;
 }
 .AddPost__top {
+    margin: 0 0 20px 0; 
     display: flex;
     align-items: center;
     gap: 10px;
@@ -17,6 +18,30 @@
     border-radius: 50%;
     height: 50px;
     width: 50px;
+}
+
+.AddPost__middle {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.AddPost__middle__img {
+    max-height: 400px;
+    max-width: 100%;
+    object-fit: cover;
+}
+.AddPost__middle_trash-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.5rem;
+    color: var(--red);
+    padding: 10px;
+    background-color: var(--light-violet);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .AddPost__bottom {

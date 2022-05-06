@@ -106,12 +106,12 @@ a {
 
 .left-section-global {
   flex: 1;
-  min-width: 200px;
+  min-width: 100px;
   /* background-color: blue; */
 }
 
 .middle-section-global {
-  width: 600px;
+  width: 550px;
   max-width: 100%;
   /* background-color: red; */
 }
@@ -119,7 +119,7 @@ a {
 .right-section-global {
   flex: 1;
   background-color: orange;
-  min-width: 200px;
+  min-width: 100px;
 }
 
 .UserList-global__addition {
