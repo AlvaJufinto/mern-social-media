@@ -1,13 +1,52 @@
 .HomeContainer {
     margin: 20px auto;
     display: flex;
+    align-items: flex-start;
     gap: 20px;
 }
 
-.Home__UserList__addition {
+.Home__UserList__unfollow {
+    color: var(--red);
+}
+.Home__UserList__suggestion {
     color: var(--violet);
 }
 
 .Home__middle-side__post-containers {
     margin: 20px 0;
+}
+
+.Home__right-side__UserShortcut {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0 0 30px 0;
+}
+.UserShortcut__img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+}
+.UserShortcut__icon {
+    margin-left: auto;
+    font-size: 1.5rem;
+    color: var(--red);
+}
+
+@media (max-width: 769px) {
+    .Home__right-side {
+        display: none;
+    }
+
+    .Home__middle-side {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .Home__left-side {
+        display: none;
+    }
 }

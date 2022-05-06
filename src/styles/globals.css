@@ -86,7 +86,7 @@ a {
 }
 
 .UserList-global__list {
-  margin: 10px 0;
+  margin: 25px 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -103,6 +103,10 @@ a {
   white-space: nowrap;
   overflow: hidden;
 }
+.UserList-global__addition {
+  margin-left: auto;
+  font-weight: 600;
+}
 
 .left-section-global {
   flex: 1;
@@ -118,11 +122,7 @@ a {
 
 .right-section-global {
   flex: 1;
-  background-color: orange;
+  /* background-color: orange; */
   min-width: 100px;
 }
-
-.UserList-global__addition {
-  margin-left: auto;
-  font-weight: 600;
-}
+  

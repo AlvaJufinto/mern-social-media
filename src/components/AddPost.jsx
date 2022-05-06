@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="AddPostWrapper container-border-global">
         <div className="AddPost__top">
             <img  className="AddPost__img" src={noAvatar} alt="you cunt" />
-            <input className="AddPost__input-text input-text-global"  type="text" placeholder="Tell us what you’re thinking, William!"  />
+            <input className="AddPost__input-text input-text-global"  type="text" placeholder="Tell us what you’re thinking, Thomas!"  />
         </div>
         {img && (
           <div className="AddPost__middle">
