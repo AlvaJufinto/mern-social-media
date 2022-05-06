@@ -1,4 +1,51 @@
 .PostWrapper {
-    margin: 20px 0  ;
+    margin: 30px 0;
     padding: 20px;
 }
+
+.Post__Top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Post__Top a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+.Post__Top__profile-img {
+    height: 50px;
+    width: 50px;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+}
+.Post__Top__period {
+    color: var(--violet);   
+}
+
+.Post__Middle {
+    margin: 20px 0;
+}
+.Post__Middle__Description {
+    margin: 10px 0;
+}
+.Post__Middle__img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.Post__Bottom {
+    display: flex;
+    justify-content: space-between;
+}
+.Post__Bottom__likes-comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
