@@ -81,3 +81,45 @@ a {
   border: 1px solid var(--light-violet);
   border-radius: 10px;
 }
+
+.UserList-global__list {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.UserList-global__image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--grey);
+}
+.UserList-global__username {
+  text-overflow: ellipsis;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.left-section-global {
+  flex: 1;
+  min-width: 200px;
+  /* background-color: blue; */
+}
+
+.middle-section-global {
+  width: 600px;
+  max-width: 100%;
+  background-color: red;
+}
+
+.right-section-global {
+  flex: 1;
+  background-color: orange;
+  min-width: 200px;
+}
+
+.UserList-global__addition {
+  margin-left: auto;
+  font-weight: 600;
+}

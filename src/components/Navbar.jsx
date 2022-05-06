@@ -13,15 +13,15 @@ const Navbar = () => {
   return (
       <div className="NavbarWrapper">
         <div className="NavbarContainer section-global">
-            <div className="Navbar__logo">
+            <div className="Navbar__logo left-section-global">
                 <SyncLogo />
                 <h2>Synchronize</h2>    
             </div>
-            <div className="Navbar__search-container input-wrapper-global">
+            <div className="Navbar__search-container input-wrapper-global middle-section-global">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search for users..." className="Navbar__text-input input-text-global"></input>
             </div>
-            <div className="Navbar__links-container">
+            <div className="Navbar__links-container right-section-global">
                 <div className="Navbar__links-container__Navigations">
                     <Link to="/"><i class="fa-solid fa-house"></i></Link>
                     <Link to="/explore"><i class="fa-solid fa-compass"></i></Link>
