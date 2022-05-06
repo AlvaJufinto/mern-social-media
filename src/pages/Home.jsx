@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
+import AddPost from "../components/AddPost";
 import noAvatar from "./../assets/img/noAvatar.png";
 
 import './../styles/pages-css/home.css';
@@ -27,7 +28,7 @@ const Home = () => {
           </div>
         </div>
         <div className="Home__middle-side middle-section-global">
-          asdsad
+          <AddPost />
         </div>
         <div className="Home__right-side right-section-global">
           asdsad

@@ -1,0 +1,38 @@
+.AddPostWrapper {
+    padding: 20px;
+    border-radius: 10px;
+}
+.AddPost__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.AddPost__input-text {
+    border-bottom: 2px solid var(--grey) !important;
+    font-size: 1rem;
+
+}
+.AddPost__img {
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.AddPost__bottom {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+.AddPost__bottom_media-container {
+    color: var(--violet);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.AddPost__bottom_media-container i {
+    font-size: 1.5rem;
+}
+.AddPost__button-share {
+    width: 100px;
+}

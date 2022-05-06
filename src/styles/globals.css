@@ -67,12 +67,15 @@ a {
 .input-wrapper-global {
   border: 1px solid var(--grey);
   border-radius: 10px;
-  padding: 12px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
   gap: 10px;
+  overflow: hidden;
 }
 .input-text-global {
+  height: 40px;
+  flex: 1;
   border: none;
   outline: none;
 }
@@ -110,7 +113,7 @@ a {
 .middle-section-global {
   width: 600px;
   max-width: 100%;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .right-section-global {
