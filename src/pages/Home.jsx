@@ -38,7 +38,6 @@ const Home = () => {
             <Post />
             <Post />
             <Post />
-
           </div>
         </div>
         <div className="Home__right-side right-section-global">

@@ -18,11 +18,10 @@
 
 html,
 body {
-    overflow-x: hidden;
-    background: var(--white);
-    min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--white);
+  min-height: 100vh;
 }
-
 /* width */
 /* ::-webkit-scrollbar {
   width: 10px;
@@ -38,6 +37,11 @@ body {
   background: var(--orange);
   border-radius: 6px;
 } */
+
+.section-global {
+  max-width: 1280px;
+  padding: 10px 1%;
+}
 
 a {
   color: var(--black);
@@ -59,10 +63,6 @@ a {
   box-shadow: 2px 2px 20px var(--blue);
 } */
 
-.section-global {
-  max-width: 1280px;
-  padding: 10px 1%;
-}
 
 .input-wrapper-global {
   border: 1px solid var(--grey);
