@@ -17,6 +17,7 @@
 }
 .Explore__Image__overlay-container {
     display: none;
+    user-select: none;
 }
 .Explore__image-container:hover .Explore__Image__overlay-container {
     gap: 20px;
