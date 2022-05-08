@@ -1,0 +1,77 @@
+.ProfileContainer {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;  
+}
+.Profile__left-side {
+    height: 345px;
+    flex: 2.7;
+}
+.Profile__right-side {
+    flex: 1;
+    background-color: orange;
+    min-width: 180px;
+}
+
+.Profile__banner-container {
+    height: 350px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.Profile__banner-container__Content {
+    background-color: rgba(0, 0,0, 0.4);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;  
+    gap: 20px;
+    padding: 20px;
+    color: var(--white);
+}
+.Profile__Content__img {
+    height: 180px;
+    width: 180px;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    object-fit: cover;
+}
+.Profile__bio__Button {
+    margin-left: auto;
+    font-size: 1.25rem;
+    padding: 0 30px;
+    height: 60px;
+}
+.Profile__bio__Username {
+    font-size: 3rem;
+}
+.Profile__bio__Fullname {
+    font-weight: 500;
+}
+.Profile__bio__Description {
+    margin: 15px 0;
+    font-size: 1.25rem;
+}
+.Profile__bio__Connections {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+.Profile__bio__Connections span {
+    color: var(--violet);
+}
+
+.Profile__bottom-container {
+    background-color: red;
+    height: 400px;
+    margin: 20px 0  ;
+}
+
+@media (max-width: 1023px) {
+    .Profile__right-side {
+        display: none;
+    }
+}
