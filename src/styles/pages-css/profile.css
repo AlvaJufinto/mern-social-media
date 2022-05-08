@@ -58,16 +58,45 @@
 .Profile__bio__Connections {
     display: flex;
     gap: 20px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 .Profile__bio__Connections span {
     color: var(--violet);
 }
 
 .Profile__bottom-container {
-    background-color: red;
-    height: 400px;
-    margin: 20px 0  ;
+    margin: 20px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.Profile__bottom-container__Intro {
+    flex: 1;
+    background-color: var(--white);
+    padding: 30px;
+}
+.Profile__Intro__categories-container {
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.Profile__intro__category {
+    display: flex;
+    gap: 15px;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.Profile__intro__category p, a{
+    font-size: 1rem;
+}
+.Profile__intro__category a {
+    text-decoration: underline;
+    color: var(--violet);
+}
+.Profile__bottom-container__PostContainer {
+    flex: 2;
 }
 
 @media (max-width: 1023px) {

@@ -28,7 +28,7 @@ const Navbar = () => {
                     <Link to="/chat"><i class="fa-solid fa-paper-plane"></i></Link>
                 </div>
                 <div className="Navbar__links-container__ProfileContainer">
-                    <Link to="/profile/:username">
+                    <Link to="/:username">
                         <img src={noAvatar} className="Navbar__ProfileContainer__img" alt="your profile img" />
                     </Link>
                 </div>

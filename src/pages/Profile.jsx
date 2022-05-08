@@ -43,8 +43,30 @@ const Profile = () => {
             </div>
           </div>
           <div className="Profile__bottom-container">
-            <div className="Profile__bottom-container__Intro">
-              
+            <div className="Profile__bottom-container__Intro container-border-global">
+              <h1>Intro</h1>
+              <div className="Profile__Intro__categories-container">
+                <div className="Profile__intro__category">
+                  <i class="fa-solid fa-house"></i>
+                  <p>City : Birmingham</p>
+                </div>
+                <div className="Profile__intro__category">
+                  <i class="fa-solid fa-house"></i>
+                  <p>From : Birmingham</p>
+                </div>
+                <div className="Profile__intro__category">
+                  <i class="fa-solid fa-house"></i>
+                  <p>Work : Peaky Blinders</p>
+                </div>
+                <div className="Profile__intro__category">
+                  <i class="fa-solid fa-house"></i>
+                  <p>Relationship : Playboy</p>
+                </div>
+                <div className="Profile__intro__category">
+                  <i class="fa-solid fa-house"></i>
+                  <a href="https://github.com/AlvaJufinto" target="_blank" >Website</a>
+                </div>
+              </div>
             </div>
             <div className="Profile__bottom-container__PostContainer">
               <AddPost />
