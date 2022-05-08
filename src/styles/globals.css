@@ -102,6 +102,7 @@ a {
   max-width: 90%;
   white-space: nowrap;
   overflow: hidden;
+  font-weight: 600;
 }
 .UserList-global__addition {
   margin-left: auto;
@@ -113,16 +114,13 @@ a {
   min-width: 100px;
   /* background-color: blue; */
 }
-
 .middle-section-global {
   width: 550px;
   max-width: 100%;
   /* background-color: red; */
 }
-
 .right-section-global {
   flex: 1;
-  /* background-color: orange; */
   min-width: 100px;
 }
-  
+
