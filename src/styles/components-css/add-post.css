@@ -1,6 +1,7 @@
 .AddPostWrapper {
     padding: 20px;
     border-radius: 10px;
+    background-color: white;
 }
 .AddPost__top {
     margin: 0 0 20px 0; 

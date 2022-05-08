@@ -26,7 +26,7 @@ const Profile = () => {
             <div className="Profile__banner-container__Content">
               <img src={noAvatar} alt="profile img" className="Profile__Content__img" />
               <div className="Profile__Content__bio">
-                <h1 className="Profile__bio__Username">Tom Shelby</h1>
+                <h1 className="Profile__bio__Username">tom.shelby</h1>
                 <h2 className="Profile__bio__Fullname">Thomas Shelby</h2>
                 <p className="Profile__bio__Description">Slebew</p>
                 <div className="Profile__bio__Connections">
@@ -43,7 +43,13 @@ const Profile = () => {
             </div>
           </div>
           <div className="Profile__bottom-container">
-
+            <div className="Profile__bottom-container__Intro">
+              
+            </div>
+            <div className="Profile__bottom-container__PostContainer">
+              <AddPost />
+              <Post />
+            </div>
           </div>
         </div>
         <div className="Profile__right-side">

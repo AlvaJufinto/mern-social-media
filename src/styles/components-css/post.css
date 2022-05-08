@@ -1,6 +1,7 @@
 .PostWrapper {
     margin: 30px 0;
     padding: 20px;
+    background-color: var(--white);
 }
 
 .Post__Top {
