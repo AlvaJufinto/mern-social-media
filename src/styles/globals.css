@@ -109,6 +109,10 @@ a {
   font-weight: 600;
 }
 
+.Explore__Image__likes-comments i {
+  font-size: 1.5rem;
+}
+
 .left-section-global {
   flex: 1;
   min-width: 100px;

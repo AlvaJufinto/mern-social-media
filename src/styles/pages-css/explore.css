@@ -2,13 +2,13 @@
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    background-color: red;
+    gap: 1vw;
 }
 .Explore__image-container {
     flex: 1;
     height: 300px;
     min-width: 300px;
+    position: relative;
 }
 .Explore__Image {
     height: 100%;
@@ -17,5 +17,31 @@
 }
 .Explore__Image__overlay-container {
     display: none;
-    /* display: flex; */
+}
+.Explore__image-container:hover .Explore__Image__overlay-container {
+    gap: 20px;
+    position: absolute;
+    background-color: var(--light-violet);
+    opacity: 0.5;
+    display: flex;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.Explore__Image__likes-comments {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) { 
+    .Explore__image-container {
+        height: 150px;
+        min-width: 150px;
+    }
 }
