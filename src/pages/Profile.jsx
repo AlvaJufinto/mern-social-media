@@ -51,19 +51,19 @@ const Profile = () => {
                   <p>City : Birmingham</p>
                 </div>
                 <div className="Profile__intro__category">
-                  <i class="fa-solid fa-house"></i>
+                  <i class="fa-solid fa-location-dot"></i>
                   <p>From : Birmingham</p>
                 </div>
                 <div className="Profile__intro__category">
-                  <i class="fa-solid fa-house"></i>
+                  <i class="fa-solid fa-briefcase"></i>
                   <p>Work : Peaky Blinders</p>
                 </div>
                 <div className="Profile__intro__category">
-                  <i class="fa-solid fa-house"></i>
+                  <i class="fa-solid fa-heart"></i>
                   <p>Relationship : Playboy</p>
                 </div>
                 <div className="Profile__intro__category">
-                  <i class="fa-solid fa-house"></i>
+                  <i class="fa-solid fa-globe"></i>
                   <a href="https://github.com/AlvaJufinto" target="_blank" >Website</a>
                 </div>
               </div>
@@ -75,7 +75,24 @@ const Profile = () => {
           </div>
         </div>
         <div className="Profile__right-side">
-          adsadssad 
+          <div className="UserList-global">
+            <h2 className="UserList-global__title">Followings</h2>
+            <div className="UserList-global__list">
+              <Link to="/:username" >
+                <img className="UserList-global__image" src={noAvatar} alt="bruh" />
+              </Link>
+              <h3 className="UserList-global__username" title="Alfie Solomons">Alfie Solomons</h3>
+            </div>
+          </div>
+          <div className="UserList-global">
+            <h2 className="UserList-global__title">Followers</h2>
+            <div className="UserList-global__list">
+              <Link to="/:username" >
+                <img className="UserList-global__image" src={noAvatar} alt="bruh" />
+              </Link>
+              <h3 className="UserList-global__username" title="Alfie Solomons">Mackenzie</h3>
+            </div>
+          </div>
         </div>
       </div>
     </>
