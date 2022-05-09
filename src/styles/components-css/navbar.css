@@ -22,7 +22,6 @@
     border: none !important;
     background-color: white;
 }
-
 .Navbar__ProfileContainer__img {
     width: 40px;
     height: 40px;
@@ -36,14 +35,15 @@
 .Navbar__links-container__Navigations {
     display: flex;
     gap: 20px;
-    font-size: 1.5rem;
+}
+.Navbar__links-container__Navigations i {
+    font-size: 1.25rem;
 }
 .Navbar__links-container__ProfileContainer a {
     display: flex;
     align-items: center;
     margin: 0 0 0 20px;
 }
-
 
 @media (max-width: 1023px) {
     .Home__left-side {
