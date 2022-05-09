@@ -41,8 +41,9 @@
 .Profile__bio__Button {
     margin-left: auto;
     font-size: 1.25rem;
-    padding: 0 30px;
+    width: 150px;
     height: 60px;
+
 }
 .Profile__bio__Username {
     font-size: 3rem;
@@ -100,6 +101,27 @@
 }
 .Profile__bottom-container__PostContainer {
     flex: 2;
+}
+
+@media (max-width: 768px) { 
+    .Profile__banner-container {
+        height: 550px;
+    }
+    .Profile__bottom-container  {
+       flex-direction: column;
+    }
+    .Profile__bottom-container__Intro {
+        width: 100%;
+    }
+    .Profile__banner-container__Content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .Profile__bio__Button {
+        margin: 20px 0 0 0;
+    }
 }
 
 @media (max-width: 1023px) {

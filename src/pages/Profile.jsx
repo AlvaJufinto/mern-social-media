@@ -13,7 +13,7 @@ import noBanner from "./../assets/img/noBanner.jpg"
 import './../styles/pages-css/profile.css';
 
 const Profile = () => {
-  const [isSelf, setIsSelf] = useState(true);
+  const [isSelf, setIsSelf] = useState(false);
 
   return (
     <>
@@ -76,21 +76,23 @@ const Profile = () => {
         </div>
         <div className="Profile__right-side">
           <div className="UserList-global">
+            <h2 className="UserList-global__title">Followers</h2>
+            <div className="UserList-global__list">
+              <Link to="/:username" >
+                <img className="UserList-global__image" src={noAvatar} alt="bruh" />
+              </Link>
+              <h3 className="UserList-global__username" title="Alfie Solomons">Alfie Solomons</h3>
+              {isSelf && <p className="Home__UserList__unfollow UserList-global__addition">Unfollow</p>}
+            </div>
+          </div>
+          <div className="UserList-global">
             <h2 className="UserList-global__title">Followings</h2>
             <div className="UserList-global__list">
               <Link to="/:username" >
                 <img className="UserList-global__image" src={noAvatar} alt="bruh" />
               </Link>
               <h3 className="UserList-global__username" title="Alfie Solomons">Alfie Solomons</h3>
-            </div>
-          </div>
-          <div className="UserList-global">
-            <h2 className="UserList-global__title">Followers</h2>
-            <div className="UserList-global__list">
-              <Link to="/:username" >
-                <img className="UserList-global__image" src={noAvatar} alt="bruh" />
-              </Link>
-              <h3 className="UserList-global__username" title="Alfie Solomons">Mackenzie</h3>
+              {isSelf && <p className="Home__UserList__unfollow UserList-global__addition">Unfollow</p>}
             </div>
           </div>
         </div>
