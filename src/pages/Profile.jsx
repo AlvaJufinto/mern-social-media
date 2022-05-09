@@ -13,7 +13,7 @@ import noBanner from "./../assets/img/noBanner.jpg"
 import './../styles/pages-css/profile.css';
 
 const Profile = () => {
-  const [isSelf, setIsSelf] = useState(false);
+  const [isSelf, setIsSelf] = useState(true);
 
   return (
     <>

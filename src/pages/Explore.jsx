@@ -15,7 +15,7 @@ const Explore = () => {
     <>
       <Navbar />
       <div className="ExploreContainer section-global">
-        <div className="Explore__image-container">
+        <Link to="/p/:id" className="Explore__image-container">
           <img className="Explore__Image" src={noBanner} alt="image" />
           <div className="Explore__Image__overlay-container">
             <div className="Explore__Image__likes-comments">
@@ -27,8 +27,8 @@ const Explore = () => {
               <p>5</p>
             </div>
           </div>  
-        </div>
-        <div className="Explore__image-container">
+        </Link>
+        <Link to="/p/:id" className="Explore__image-container">
           <img className="Explore__Image" src={noBanner} alt="image" />
           <div className="Explore__Image__overlay-container">
             <div className="Explore__Image__likes-comments">
@@ -40,8 +40,8 @@ const Explore = () => {
               <p>5</p>
             </div>
           </div>  
-        </div>
-        <div className="Explore__image-container">
+        </Link>
+        <Link to="/p/:id" className="Explore__image-container">
           <img className="Explore__Image" src={noBanner} alt="image" />
           <div className="Explore__Image__overlay-container">
             <div className="Explore__Image__likes-comments">
@@ -53,8 +53,8 @@ const Explore = () => {
               <p>5</p>
             </div>
           </div>  
-        </div>
-        <div className="Explore__image-container">
+        </Link>
+        <Link to="/p/:id" className="Explore__image-container">
           <img className="Explore__Image" src={noBanner} alt="image" />
           <div className="Explore__Image__overlay-container">
             <div className="Explore__Image__likes-comments">
@@ -66,85 +66,8 @@ const Explore = () => {
               <p>5</p>
             </div>
           </div>  
-        </div>
-        <div className="Explore__image-container">
-          <img className="Explore__Image" src={noBanner} alt="image" />
-          <div className="Explore__Image__overlay-container">
-            <div className="Explore__Image__likes-comments">
-              <LikeOutLine />
-              <p>10</p>
-            </div>
-            <div className="Explore__Image__likes-comments">
-              <i className="fa-solid fa-message"></i>
-              <p>5</p>
-            </div>
-          </div>  
-        </div>
-        <div className="Explore__image-container">
-          <img className="Explore__Image" src={noBanner} alt="image" />
-          <div className="Explore__Image__overlay-container">
-            <div className="Explore__Image__likes-comments">
-              <LikeOutLine />
-              <p>10</p>
-            </div>
-            <div className="Explore__Image__likes-comments">
-              <i className="fa-solid fa-message"></i>
-              <p>5</p>
-            </div>
-          </div>  
-        </div>
-        <div className="Explore__image-container">
-          <img className="Explore__Image" src={noBanner} alt="image" />
-          <div className="Explore__Image__overlay-container">
-            <div className="Explore__Image__likes-comments">
-              <LikeOutLine />
-              <p>10</p>
-            </div>
-            <div className="Explore__Image__likes-comments">
-              <i className="fa-solid fa-message"></i>
-              <p>5</p>
-            </div>
-          </div>  
-        </div>
-        <div className="Explore__image-container">
-          <img className="Explore__Image" src={noBanner} alt="image" />
-          <div className="Explore__Image__overlay-container">
-            <div className="Explore__Image__likes-comments">
-              <LikeOutLine />
-              <p>10</p>
-            </div>
-            <div className="Explore__Image__likes-comments">
-              <i className="fa-solid fa-message"></i>
-              <p>5</p>
-            </div>
-          </div>  
-        </div>
-        <div className="Explore__image-container">
-          <img className="Explore__Image" src={noBanner} alt="image" />
-          <div className="Explore__Image__overlay-container">
-            <div className="Explore__Image__likes-comments">
-              <LikeOutLine />
-              <p>10</p>
-            </div>
-            <div className="Explore__Image__likes-comments">
-              <i className="fa-solid fa-message"></i>
-              <p>5</p>
-            </div>
-          </div>  
-        </div>
-        <div className="Explore__image-container">
-          <img className="Explore__Image" src={noBanner} alt="image" />
-          <div className="Explore__Image__overlay-container">
-            <div className="Explore__Image__likes-comments">
-              <LikeOutLine />
-              <p>10</p>
-            </div>
-            <div className="Explore__Image__likes-comments">
-              <i className="fa-solid fa-message"></i>
-              <p>5</p>
-            </div>
-          </div>  
-        </div>
+        </Link>
+        
       </div>
     </>
   );

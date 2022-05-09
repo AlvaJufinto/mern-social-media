@@ -72,6 +72,7 @@ a {
   align-items: center;
   gap: 10px;
   overflow: hidden;
+  outline: none;
 }
 .input-text-global {
   height: 40px;

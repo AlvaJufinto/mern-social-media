@@ -1,0 +1,58 @@
+.PostPageContainer {
+    margin: auto;
+    width: 800px !important;
+    max-width: 100%;
+}
+
+.PostPage__CommentSection {
+    padding: 40px 20px;
+}
+
+.PostPage__Comment {
+    margin: 0 0 40px 0;
+    display: flex;
+    /* align-items: flex-start; */
+    /* justify-content: flex-start; */
+    /* background-color: red; */
+    max-width: 90%;
+    gap: 20px;
+}
+.PostPage__Comment__right-section {
+    width: 100%;
+}
+.PostPage__Comment__comment-details {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    /* background-color: blue; */
+    width: 100%;
+}
+.PostPage__Comment__period {
+    color: var(--violet)
+}
+.PostPage__Comment__img {
+    border-radius: 50%;
+    border: 1px solid var(--grey);
+    height: 60px;
+    width: 60px;
+}
+.PostPage__Comment__Content {
+    margin: 10px 0 0 0;
+    background-color: var(--grey);
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.PostPage__AddComment {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    height: 50px;;
+}
+.PostPage__AddComment__search-input {
+    flex: 4;   
+}
+.PostPage__AddComment__search-button {
+    flex: 1;
+    font-size: 1    rem;
+}
