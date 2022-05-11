@@ -55,6 +55,15 @@
     color: var(--violet);
 }
 
+.Auth__error {
+    color: var(--red);
+    text-transform: capitalize;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
     .AuthWrapper {
         border: none !important;
