@@ -59,7 +59,6 @@
     color: var(--red);
     text-transform: capitalize;
     text-align: center;
-    margin: 20px 0;
     font-size: 1.15rem;
     font-weight: 600;
 }

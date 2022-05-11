@@ -45,6 +45,7 @@ const SignUp = () => {
           <form className="AuthWrapper container-border-global" onSubmit={e => handleSignUp(e)}>
               <h1 className="AuthWrapper__title">Synchronize</h1>
               <p className="AuthWrapper__description">Let’s get started</p>
+              {error && <p className="Auth__error"><i class="fa-solid fa-circle-exclamation"></i> {error}</p> }
               <div className="Auth__input-group">
                   <p className="Auth__input-group__Name">Username</p>
                   <div className="Auth__input-group__wrapper input-wrapper-global">
@@ -80,8 +81,7 @@ const SignUp = () => {
                   "Sign up"
                 }
               </button>
-              {error && <p className="Auth__error"><i class="fa-solid fa-circle-exclamation"></i> {error}</p> }
-              <p className="Auth__optional-link" >Already have an account? <Link to="/sign-in">Sign up</Link></p>
+              <p className="Auth__optional-link" >Already have an account? <Link to="/sign-in">Sign in</Link></p>
           </form>
       </div>
   );
