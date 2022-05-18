@@ -19,11 +19,12 @@ const Home = () => {
   
   useEffect(() => {
     // console.log(mySelf?.posts == null);
-  }, [])
+    console.log(userAuth);
+  }, [isAuthLoading])
 
   const homeLogout = () => {
     localStorage.removeItem("SM_JWT_Token");
-    navigate("/sign-in", { replace: true })
+    navigate("/sign-in", { replace: true });
   }
 
   return (
@@ -45,32 +46,23 @@ const Home = () => {
         <div className="Home__middle-side middle-section-global">
           <AddPost />
           <div className="Home__middle-side__post-containers">
-            {/* <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post /> */}
-            {
-              // mySelf?.posts?.length === 0 ?
-              //   <i className="fas fa-circle-notch fa-spin Home__middle-side__IconLoading "></i>
-              //     :
-              //   <Post />
-            }
-
-            
+            { isAuthLoading && <i className="fas fa-circle-notch fa-spin Home__middle-side__information "></i> }
+            { userAuth?.posts?.length > 0 && !isAuthLoading && <Post /> }
+            { userAuth?.posts?.length === 0 && !isAuthLoading && <p className="Home__middle-side__information">Sorry there's no data available 😔</p> }
           </div>
         </div>
         <div className="Home__right-side right-section-global">
-          <div className="Home__right-side__UserShortcut">
-            <img src={noAvatar} alt="bruv" className="UserShortcut__img" />
-            <div className="UserShortcut__name">
-              <p className="UserShortcut__username">{userAuth?.username}</p>
-              <h3 className="UserShortcut__fullname">{userAuth?.fullname}</h3>
+          { isAuthLoading &&  <i className="fas fa-circle-notch fa-spin Home__middle-side__IconLoading "></i> }
+          { !isAuthLoading && !authErrorMessage && 
+            <div className="Home__right-side__UserShortcut">
+              <img src={noAvatar} alt="bruv" className="UserShortcut__img" />
+              <div className="UserShortcut__name">
+                <p className="UserShortcut__username">{userAuth?.username}</p>
+                <h3 className="UserShortcut__fullname">{userAuth?.fullname}</h3>
+              </div>
+              <i className="UserShortcut__icon fa-solid fa-arrow-right-from-bracket" onClick={homeLogout}></i>
             </div>
-            <i className="UserShortcut__icon fa-solid fa-arrow-right-from-bracket" onClick={homeLogout}></i>
-          </div>
+          }
           <div className="UserList-global">
             <h2 className="UserList-global__title">Suggestions</h2>
             <div className="UserList-global__list">

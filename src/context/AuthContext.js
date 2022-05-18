@@ -32,18 +32,6 @@ const AuthReducer = (state, action) => {
                 isAuthLoading: false,
                 authErrorMessage: action.payload,
             }
-        case "LOGOUT_START":
-            return {
-                userAuth: action.payload,
-                isAuthLoading: true,
-                authErrorMessage: null,
-            }
-        case "LOGOUT_SUCCESS":
-            return {
-                userAuth: null,
-                isAuthLoading: false,
-                authErrorMessage: null,
-            }
         default: 
             return state;
     }
@@ -56,10 +44,11 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         (async () => {
+            dispatch({ type: "FETCH_START" });    
             try {
                 let res = await userApi.me(jwtToken)
-                console.log(res);
-                dispatch({ type: "FETCH_START", payload: res.data.data });
+                console.log(res.data.data);
+                dispatch({ type: "FETCH_SUCCESS", payload: res.data.data });    
               } catch (err) {
                 console.log(err.response);
                 navigate("/sign-in", { replace: true });
