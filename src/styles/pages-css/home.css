@@ -14,6 +14,8 @@
 
 .Home__middle-side__post-containers {
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .Home__right-side__UserShortcut {
@@ -33,6 +35,13 @@
     margin-left: auto;
     font-size: 1.5rem;
     color: var(--red);
+    cursor: pointer;
+}
+
+.Home__middle-side__IconLoading {
+    margin: 20px auto;
+    font-size: 2rem;
+
 }
 
 @media (max-width: 769px) {

@@ -22,13 +22,17 @@ const SignIn = () => {
     }
     
     console.log(body)
+
     try {
       setIsLoading(true);
       let res = await authApi.signIn(body);
 
-      console.log(res);
+      // console.log(res.data.smtoken);
+      let jwtToken = res.data.smtoken
       setIsLoading(false);
+      localStorage.setItem("SM_JWT_Token", jwtToken);
       navigate("/", { replace: true });
+      
     } catch (err) {
       setIsLoading(false);
       setError(err.response.data.message);
@@ -57,7 +61,13 @@ const SignIn = () => {
                 <input type="password" placeholder="some secret" name="password" className="Auth__input-text input-text-global" required/>
               </div>
           </div>
-        <button className="Auth__submit-button button-global">Sign in</button>
+        <button className="Auth__submit-button button-global">
+          {isLoading ? 
+            <i class="fas fa-circle-notch fa-spin"></i>
+              :
+            "Sign in"
+          }
+        </button>
         <p className="Auth__optional-link" >Don’t have an account? <Link to="/sign-up">Sign up</Link></p>
       </form>
     </div>
