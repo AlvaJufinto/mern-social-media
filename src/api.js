@@ -10,9 +10,24 @@ export const authApi = {
   },
 };
 
+export const publicRoute = {
+  getUsername: (body) => {
+    
+  }
+}
+
 export const userApi = {
   me: (token) => {
     return axios.get(`${baseUrl}/user/me`, 
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,  
+      }
+    });
+  },
+  addPost: (token, body) => {
+    return axios.post(`${baseUrl}/user/addpost`, 
+    body,
     {
       headers: {
         'Authorization': `Bearer ${token}`,  

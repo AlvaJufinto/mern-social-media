@@ -3,19 +3,41 @@ import {
   Link
 } from "react-router-dom";
 
-import { ReactComponent as SyncLogo } from "./../assets/svg/sync-logo.svg";
+import { userApi } from "../api";
+import { UserContext } from "../context/UserContext";
+
 import noAvatar from "./../assets/img/noAvatar.png"
 
 import './../styles/components-css/add-post.css';
 
 const Navbar = () => {
+  const { userPosts, isUserPostsLoading, userErrorMessage, dispatch } = useContext(UserContext);
+  const [description, setDescription] = useState("");
   const [img, setImg] = useState(null);
+  let jwtToken = localStorage.getItem("SM_JWT_Token");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    
+    const body = {
+      description: description, 
+    }
+    
+    dispatch({ type: "ADD_POST_START" })
+    try {
+      let res = await userApi.addPost(jwtToken, body);
+      console.log(res);
+      dispatch({ type: "ADD_POST_SUCCESS", payload: res.data.data })
+    } catch (err) {
+      dispatch({ type: "ADD_POST_FAILURE", payload: err.response.data.message })
+    }
+  }
 
   return (
-      <div className="AddPostWrapper container-border-global">
+      <form className="AddPostWrapper container-border-global" onSubmit={submitHandler}>
         <div className="AddPost__top">
             <img  className="AddPost__img" src={noAvatar} alt="you cunt" />
-            <input className="AddPost__input-text input-text-global"  type="text" placeholder="Tell us what you’re thinking, Thomas!"  />
+            <input className="AddPost__input-text input-text-global" value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder="Tell us what you’re thinking, Thomas!"  />
         </div>
         {img && (
           <div className="AddPost__middle">
@@ -35,9 +57,15 @@ const Navbar = () => {
                     onChange={(e) => setImg(e.target.files[0])}
                 />
             </label>
-            <button className="AddPost__button-share button-global">Share</button>
+            <button className="AddPost__button-share button-global">
+              {isUserPostsLoading ?
+                <i className="fas fa-circle-notch fa-spin Home__middle-side__IconLoading "></i>
+                  :
+                "Share"
+              }
+            </button>
         </div>
-      </div>
+      </form>
   );
 }
 

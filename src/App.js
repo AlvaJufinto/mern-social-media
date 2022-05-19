@@ -6,7 +6,7 @@ import {
   Navigate
 } from "react-router-dom";
 
-import { AuthContextProvider } from "./context/AuthContext";
+import { UserContextProvider } from "./context/UserContext";
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <Router>
-      <AuthContextProvider>
+      <UserContextProvider>
         <Routes>
           <Route path="/sign-in" element={<SignIn />} ></Route>
           <Route path="/sign-up" element={<SignUp />}></Route>
@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/explore" element={<Explore />}></Route>
           <Route path="/p/:id" element={<PostPage />}></Route>
         </Routes>
-      </AuthContextProvider>
+      </UserContextProvider>
     </Router>
   );
 }

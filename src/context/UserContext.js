@@ -9,10 +9,10 @@ const INITIAL_STATE = {
     userPosts: null,
     isAuthLoading: false,
     isUserPostsLoading: false,
-    authErrorMessage: null,
+    userErrorMessage: null,
 }
 
-export const AuthContext = createContext(INITIAL_STATE);
+export const UserContext = createContext(INITIAL_STATE);
 
 const AuthReducer = (state, action) => {
     switch (action.type) {
@@ -21,16 +21,16 @@ const AuthReducer = (state, action) => {
                 userAuth: null,
                 userPosts: null,
                 isAuthLoading: true,
-                isUserPostsLoading: true,
-                authErrorMessage: null,
+                isUserPostsLoading: false,
+                userErrorMessage: null,
             };
         case "FETCH_SUCCESS":
             return {
                 userAuth: action.payload,
                 userPosts: action.payload.posts,
                 isAuthLoading: false,
-                isUserPostsLoading: true,
-                authErrorMessage: null,
+                isUserPostsLoading: false,
+                userErrorMessage: null,
             }
         case "FETCH_FAILURE":
             return {
@@ -38,38 +38,38 @@ const AuthReducer = (state, action) => {
                 userPosts: null,
                 isAuthLoading: false,
                 isUserPostsLoading: false,
-                authErrorMessage: action.payload,
+                userErrorMessage: action.payload,
             }
         case "ADD_POST_START":
             return {
-                userAuth: INITIAL_STATE.userAuth,
-                userPosts: INITIAL_STATE.userPosts,
+                userAuth: state.userAuth,
+                userPosts: state.userPosts,
                 isAuthLoading: false,
                 isUserPostsLoading: true,
-                authErrorMessage: null,
+                userErrorMessage: null,
             }
         case "ADD_POST_SUCCESS":
             return {
-                userAuth: INITIAL_STATE.userAuth,
-                userPosts: [action.payload, ...INITIAL_STATE.userPosts],
+                userAuth: state.userAuth,
+                userPosts: [action.payload, ...state.userPosts],
                 isAuthLoading: false,
                 isUserPostsLoading: false,
-                authErrorMessage: null,
+                userErrorMessage: null,
             }
         case "ADD_POST_FAILURE":
             return {
-                userAuth: INITIAL_STATE.userAuth,
-                userPosts: INITIAL_STATE.userPosts,
+                userAuth: state.userAuth,
+                userPosts: state.userPosts,
                 isAuthLoading: false,
                 isUserPostsLoading: false,
-                authErrorMessage: action.payload,
+                userErrorMessage: action.payload,
             }
         default: 
             return state;
     }
 }
 
-export const AuthContextProvider = ({ children }) => {
+export const UserContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE)
     let navigate = useNavigate();
     let jwtToken = localStorage.getItem("SM_JWT_Token");
@@ -90,14 +90,16 @@ export const AuthContextProvider = ({ children }) => {
     }, [jwtToken]);
     
     return (
-        <AuthContext.Provider
+        <UserContext.Provider
             value={{
                 userAuth: state.userAuth,
+                userPosts: state.userPosts,
                 isAuthLoading: state.isAuthLoading,
-                authErrorMessage: state.authErrorMessage,
+                isUserPostsLoading: state.isUserPostsLoading,
+                userErrorMessage: state.userErrorMessage,
                 dispatch
             }}>
             { children }
-        </AuthContext.Provider>
+        </UserContext.Provider>
     )
 }
