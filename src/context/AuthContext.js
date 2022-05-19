@@ -6,7 +6,9 @@ import { userApi } from "../api";
 
 const INITIAL_STATE = {
     userAuth: null,
+    userPosts: null,
     isAuthLoading: false,
+    isUserPostsLoading: false,
     authErrorMessage: null,
 }
 
@@ -17,19 +19,49 @@ const AuthReducer = (state, action) => {
         case "FETCH_START":
             return {
                 userAuth: null,
+                userPosts: null,
                 isAuthLoading: true,
+                isUserPostsLoading: true,
                 authErrorMessage: null,
             };
         case "FETCH_SUCCESS":
             return {
                 userAuth: action.payload,
+                userPosts: action.payload.posts,
                 isAuthLoading: false,
+                isUserPostsLoading: true,
                 authErrorMessage: null,
             }
         case "FETCH_FAILURE":
             return {
                 userAuth: null,
+                userPosts: null,
                 isAuthLoading: false,
+                isUserPostsLoading: false,
+                authErrorMessage: action.payload,
+            }
+        case "ADD_POST_START":
+            return {
+                userAuth: INITIAL_STATE.userAuth,
+                userPosts: INITIAL_STATE.userPosts,
+                isAuthLoading: false,
+                isUserPostsLoading: true,
+                authErrorMessage: null,
+            }
+        case "ADD_POST_SUCCESS":
+            return {
+                userAuth: INITIAL_STATE.userAuth,
+                userPosts: [action.payload, ...INITIAL_STATE.userPosts],
+                isAuthLoading: false,
+                isUserPostsLoading: false,
+                authErrorMessage: null,
+            }
+        case "ADD_POST_FAILURE":
+            return {
+                userAuth: INITIAL_STATE.userAuth,
+                userPosts: INITIAL_STATE.userPosts,
+                isAuthLoading: false,
+                isUserPostsLoading: false,
                 authErrorMessage: action.payload,
             }
         default: 
