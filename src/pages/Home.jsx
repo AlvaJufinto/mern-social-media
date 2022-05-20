@@ -9,19 +9,25 @@ import AddPost from "../components/AddPost";
 import Post from "../components/Post";
 import noAvatar from "./../assets/img/noAvatar.png";
 
+import { userApi } from "../api";
 import { UserContext } from "../context/UserContext";
 
 import './../styles/pages-css/home.css';
 
 const Home = () => {
   const { userAuth, userPosts, isAuthLoading, userErrorMessage } = useContext(UserContext);
+  const [feedPosts, setFeedPosts] = useState([]);
   let navigate = useNavigate();
-  
-  useEffect(() => {
-    // console.log(mySelf?.posts == null);
-    console.log(userAuth);
-    console.log(userPosts);
-  }, [isAuthLoading])
+  let jwtToken = localStorage.getItem("SM_JWT_Token");
+
+  useEffect(async () => {
+    try {
+      let res = await userApi.feeds(jwtToken);
+      setFeedPosts([...userPosts, ...res.data.data])
+    } catch (err) {
+      console.log(err.response);
+    }
+  }, [isAuthLoading, userPosts, userAuth, feedPosts]);
 
   const homeLogout = () => {
     localStorage.removeItem("SM_JWT_Token");
@@ -48,8 +54,8 @@ const Home = () => {
           <AddPost />
           <div className="Home__middle-side__post-containers">
             { isAuthLoading && <i className="fas fa-circle-notch fa-spin Home__middle-side__information "></i> }
-            { userPosts?.length > 0 && !isAuthLoading && 
-              userPosts?.map(( post ) => (
+            { feedPosts?.length > 0 && !isAuthLoading && 
+              feedPosts?.map(( post ) => (
                 <Post 
                   postId={post?._id}
                   username={userAuth?.username}
@@ -77,7 +83,7 @@ const Home = () => {
           <div className="UserList-global">
             <h2 className="UserList-global__title">Suggestions</h2>
             <div className="UserList-global__list">
-              <Link to="/:username" >
+              <Link to={`/${userAuth?.username}`} >
                 <img className="UserList-global__image" src={noAvatar} alt="bruh" />
               </Link>
               <h3 className="UserList-global__username" title="Alfie Solomons">Alfie Solomons</h3>

@@ -11,7 +11,7 @@ export const authApi = {
 };
 
 export const publicRoute = {
-  getUsername: (body) => {
+  getUser: (body) => {
     
   }
 }
@@ -19,6 +19,14 @@ export const publicRoute = {
 export const userApi = {
   me: (token) => {
     return axios.get(`${baseUrl}/user/me`, 
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,  
+      }
+    });
+  },
+  feeds: (token) => {
+    return axios.get(`${baseUrl}/user/feeds`, 
     {
       headers: {
         'Authorization': `Bearer ${token}`,  

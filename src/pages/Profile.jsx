@@ -1,7 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
-  Link
+  Link,
+  useParams 
 } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 import Navbar from "../components/Navbar";
 import AddPost from "../components/AddPost";
@@ -13,7 +15,15 @@ import noBanner from "./../assets/img/noBanner.jpg"
 import './../styles/pages-css/profile.css';
 
 const Profile = () => {
-  const [isSelf, setIsSelf] = useState(true);
+  const { userAuth } = useContext(UserContext);
+  const { username } = useParams();
+  const [isSelf, setIsSelf] = useState(false);
+
+  useEffect(() => {
+    setIsSelf(username === userAuth?.username ? true : false)
+   
+  }, [username, userAuth])
+
 
   return (
     <>
@@ -26,12 +36,12 @@ const Profile = () => {
             <div className="Profile__banner-container__Content">
               <img src={noAvatar} alt="profile img" className="Profile__Content__img" />
               <div className="Profile__Content__bio">
-                <h1 className="Profile__bio__Username">tom.shelby</h1>
-                <h2 className="Profile__bio__Fullname">Thomas Shelby</h2>
-                <p className="Profile__bio__Description">Slebew</p>
+                <h1 className="Profile__bio__Username">{isSelf ? userAuth?.username : "other"}</h1>
+                <h2 className="Profile__bio__Fullname">{isSelf ? userAuth?.fullname : "other"}</h2>
+                <p className="Profile__bio__Description">{isSelf ? userAuth?.description : "other"}</p>
                 <div className="Profile__bio__Connections">
-                  <div className="Profile__Connection"><span>0</span> Followers</div>
-                  <div className="Profile__Connection"><span>0</span> Followings</div>
+                  <div className="Profile__Connection"><span>{isSelf ? userAuth?.followers?.length : 0}</span> Followers</div>
+                  <div className="Profile__Connection"><span>{isSelf ? userAuth?.followings?.length : 0}</span> Followings</div>
                 </div>
               </div>
               {
@@ -45,14 +55,43 @@ const Profile = () => {
           <div className="Profile__bottom-container">
             <div className="Profile__bottom-container__Intro container-border-global">
               <h1>Intro</h1>
+              {isSelf ? 
+              <div className="Profile__Intro__categories-container">
+                {!userAuth?.detail?.from === "" && 
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-house"></i>
+                    <p>City : {userAuth?.detail?.from}</p>
+                  </div>
+                }
+                {
+                  !userAuth?.detail?.work === "" &&
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <p>Work : Peaky Blinders</p>
+                  </div>
+                }
+                {
+                  !userAuth?.detail?.relationship === "" &&
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-heart"></i>
+                    <p>Relationship : Playboy</p>
+                  </div>
+                }
+                {
+                  !userAuth?.detail?.website === "" &&
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-globe"></i>
+                    <a href="https://github.com/AlvaJufinto" target="_blank" >Website</a>
+                  </div>
+                }
+                {userAuth?.detail?.from === "" && userAuth?.detail?.work === "" && userAuth?.detail?.relationship === "" && userAuth?.detail?.website === "" && <p>Theres no data available 😔</p>}
+                {userAuth?.detail?.from === "" && userAuth?.detail?.work === "" && userAuth?.detail?.relationship === "" && userAuth?.detail?.website === "" && <button className="Profile__intro__Button button-global">Edit Profile</button>}
+              </div>
+                :
               <div className="Profile__Intro__categories-container">
                 <div className="Profile__intro__category">
                   <i class="fa-solid fa-house"></i>
                   <p>City : Birmingham</p>
-                </div>
-                <div className="Profile__intro__category">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p>From : Birmingham</p>
                 </div>
                 <div className="Profile__intro__category">
                   <i class="fa-solid fa-briefcase"></i>
@@ -67,9 +106,10 @@ const Profile = () => {
                   <a href="https://github.com/AlvaJufinto" target="_blank" >Website</a>
                 </div>
               </div>
+            }
             </div>
             <div className="Profile__bottom-container__PostContainer">
-              <AddPost />
+              {isSelf && <AddPost />}
               <Post />
             </div>
           </div>

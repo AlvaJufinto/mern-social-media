@@ -76,6 +76,10 @@
     background-color: var(--white);
     padding: 30px;
 }
+.Profile__intro__Button {
+    height: 60px;
+    font-size: 1.25rem;
+}
 .Profile__Intro__categories-container {
     margin: 20px 0 0 0;
     display: flex;
