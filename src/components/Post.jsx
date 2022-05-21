@@ -12,8 +12,8 @@ import noBanner from "./../assets/img/noBanner.jpg";
 
 import './../styles/components-css/post.css';
 
-const Post = ({ postId, username, period, description, imgLink, like, comment, image }) => { 
-  const [likes, setLikes] = useState(like);
+const Post = ({ postId, username, period, description, like, comment, image }) => { 
+  const [likes, setLikes] = useState(like && like);
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ const Post = ({ postId, username, period, description, imgLink, like, comment, i
         </div>
         <div className="Post__Middle">
             <p className="Post__Middle__Description">{description}</p>
-            {image && <img src={image?.imageUrl} alt="burh" className="Post__Middle__img" />}
+            {image && <img src={image?.imageUrl} className="Post__Middle__img" alt={image?.imageID} />}
         </div>
         <div className="Post__Bottom">
             <div className="Post__Bottom__likes-comments" onClick={() => {

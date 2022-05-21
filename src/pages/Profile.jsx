@@ -115,7 +115,8 @@ const Profile = () => {
                   userPosts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
                     <Post 
                       key={i}
-                      postId={post?._id}
+                      postId={post?.post?._id}
+                      image={post?.post?.image}
                       period={post?.post?.date}
                       username={userAuth?.username}
                       description={post?.post?.description}

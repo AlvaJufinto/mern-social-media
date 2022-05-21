@@ -33,10 +33,13 @@ const PostPage = () => {
       <Navbar />
       <div className="PostPageContainer section-global">
         <Post
+          postId={postDetails?._id}
           username={postDetails?.belongsto?.username}
           period={postDetails?.post?.date}
+          image={postDetails?.post?.image}
           description={postDetails?.post?.description}
           comment={postDetails?.post?.comments}
+          like={postDetails?.post?.likes}
         />
         <div className="PostPage__CommentSection container-border-global">
           <div className="PostPage__comments-container">
