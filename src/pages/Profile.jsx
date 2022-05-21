@@ -31,10 +31,10 @@ const Profile = () => {
       <div className="ProfileContainer section-global">
         <div className="Profile__left-side">
           <div className="Profile__banner-container" style={{
-                backgroundImage: `url(${noBanner})`
+                backgroundImage: `url(${!userAuth?.backgroundPict?.imageUrl && noBanner})`
               }}>
             <div className="Profile__banner-container__Content">
-              <img src={noAvatar} alt="profile img" className="Profile__Content__img" />
+              <img src={!userAuth?.profilePict?.imageUrl && noAvatar} alt="profile img" className="Profile__Content__img" />
               <div className="Profile__Content__bio">
                 <h1 className="Profile__bio__Username">{isSelf ? userAuth?.username : "other"}</h1>
                 <h2 className="Profile__bio__Fullname">{isSelf ? userAuth?.fullname : "other"}</h2>
@@ -112,15 +112,15 @@ const Profile = () => {
               {isSelf && <AddPost />}
               {
                 isSelf ?
-                  userPosts?.map(( post, i ) => (
+                  userPosts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
                     <Post 
                       key={i}
                       postId={post?._id}
-                      period={post?.date}
+                      period={post?.post?.date}
                       username={userAuth?.username}
-                      description={post?.description}
-                      likes={post?.likes?.length} 
-                      comments={post?.comments?.length} 
+                      description={post?.post?.description}
+                      like={post?.post?.likes?.length} 
+                      comment={post?.post?.comments?.length} 
                     />
                   ))
                 :

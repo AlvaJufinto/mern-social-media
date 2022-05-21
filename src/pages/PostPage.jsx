@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
-  Link
+  Link,
+  useParams
 } from "react-router-dom";
+import { publicRoute } from "../api";
 
 import Navbar from "../components/Navbar";
 import AddPost from "../components/AddPost";
@@ -11,12 +13,31 @@ import noAvatar from "./../assets/img/noAvatar.png";
 import './../styles/pages-css/post-page.css';
 
 const PostPage = () => {
+  const { id } = useParams();
+  const [postDetails, setPostDetails] = useState();
+
+  useEffect( async () => {
+    console.log(id);
+    try {
+      let res = await publicRoute.getPost(id);
+      console.log(res.data.data);
+      setPostDetails(res.data.data)
+    } catch (err) {
+      console.log(err.response)
+    }
+  }, [id])
+  
 
   return (
     <>
       <Navbar />
       <div className="PostPageContainer section-global">
-        <Post />
+        <Post
+          username={postDetails?.belongsto?.username}
+          period={postDetails?.post?.date}
+          description={postDetails?.post?.description}
+          comment={postDetails?.post?.comments}
+        />
         <div className="PostPage__CommentSection container-border-global">
           <div className="PostPage__comments-container">
             <div className="PostPage__Comment">

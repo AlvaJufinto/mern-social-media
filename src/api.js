@@ -13,6 +13,9 @@ export const authApi = {
 export const publicRoute = {
   getUser: (body) => {
     
+  },
+  getPost: (body) => {
+    return axios.get(`${baseUrl}/public/post/${body}`);
   }
 }
 
@@ -33,12 +36,13 @@ export const userApi = {
       }
     });
   },
-  addPost: (token, body) => {
-    return axios.post(`${baseUrl}/user/addpost`, 
-    body,
+  addPost: (token, formData) => {
+    return axios.post(`${baseUrl}/user/addpost`,
+    formData,
     {
       headers: {
         'Authorization': `Bearer ${token}`,  
+        "Content-Type": "multipart/form-data",
       }
     });
   },

@@ -12,8 +12,8 @@ import noBanner from "./../assets/img/noBanner.jpg";
 
 import './../styles/components-css/post.css';
 
-const Post = ({ postId, username, period, description, imgLink }) => { 
-  const [likes, setLikes] = useState(0);
+const Post = ({ postId, username, period, description, imgLink, like, comment, image }) => { 
+  const [likes, setLikes] = useState(like);
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ const Post = ({ postId, username, period, description, imgLink }) => {
         </div>
         <div className="Post__Middle">
             <p className="Post__Middle__Description">{description}</p>
-            {imgLink && <img src={noBanner} alt="burh" className="Post__Middle__img" />}
+            {image && <img src={image?.imageUrl} alt="burh" className="Post__Middle__img" />}
         </div>
         <div className="Post__Bottom">
             <div className="Post__Bottom__likes-comments" onClick={() => {
@@ -36,11 +36,11 @@ const Post = ({ postId, username, period, description, imgLink }) => {
                 setLikes(isLiked ? likes - 1 : likes + 1);
             }}>
                 {isLiked ? <LikeBg /> : <LikeOutLine />}
-                <p>{likes} Like{likes > 1 ? 's' : ''}</p>
+                <p>{likes} Like{likes > 1 && 's'}</p>
             </div>
             <Link className="Post__Bottom__likes-comments" to={`/p/${postId}`}>
                 <i class="fa-solid fa-message"></i>
-                <p>0 Comment(s)</p>
+                <p>{comment} Comment{comment?.length > 1 && 's'}</p>
             </Link>
         </div>
       </div>

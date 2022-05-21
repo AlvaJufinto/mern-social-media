@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Link
 } from "react-router-dom";
@@ -11,38 +11,48 @@ import noAvatar from "./../assets/img/noAvatar.png"
 import './../styles/components-css/add-post.css';
 
 const Navbar = () => {
-  const { userPosts, isUserPostsLoading, userErrorMessage, dispatch } = useContext(UserContext);
+  const { userAuth, userPosts, isUserPostsLoading, userErrorMessage, dispatch } = useContext(UserContext);
   const [description, setDescription] = useState("");
-  const [img, setImg] = useState(null);
+  const [image, setImage] = useState(null)
   let jwtToken = localStorage.getItem("SM_JWT_Token");
+  
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    
-    const body = {
-      description: description, 
-    }
+    let formData = new FormData();
+    formData.append('gambar', image.data)
+    formData.append('description', description)
     
     dispatch({ type: "ADD_POST_START" })
     try {
-      let res = await userApi.addPost(jwtToken, body);
+      let res = await userApi.addPost(jwtToken, formData);
       console.log(res);
-      dispatch({ type: "ADD_POST_SUCCESS", payload: res.data.data })
+      dispatch({ type: "ADD_POST_SUCCESS", payload: res.data.data });
+      setDescription(null)
+      setImage(null);
     } catch (err) {
+      console.log(err.response.data.message)
       dispatch({ type: "ADD_POST_FAILURE", payload: err.response.data.message })
     }
   }
 
   return (
-      <form className="AddPostWrapper container-border-global" onSubmit={submitHandler}>
+      <form className="AddPostWrapper container-border-global" onSubmit={submitHandler} enctype="multipart/form-data">
         <div className="AddPost__top">
-            <img  className="AddPost__img" src={noAvatar} alt="you cunt" />
-            <input className="AddPost__input-text input-text-global" value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder="Tell us what you’re thinking, Thomas!"  />
+            <img className="AddPost__img" src={noAvatar} alt="you cunt" />
+            <input className="AddPost__input-text input-text-global" value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder={`Tell us what you’re thinking, ${userAuth?.fullname.split(" ")[0]}!`} required/>
         </div>
-        {img && (
+        {image && (
           <div className="AddPost__middle">
-            <img className="AddPost__middle__img" src={URL.createObjectURL(img)} alt="AddPost__middle__img" />  
-            <i class="AddPost__middle_trash-icon fa-solid fa-trash" onClick={() => setImg(null)}></i>
+            <img className="AddPost__middle__img" src={image.preview} />  
+            <i class="AddPost__middle_trash-icon fa-solid fa-trash" onClick={() => setImage(null)}></i>
           </div>
         )}
         <div className="AddPost__bottom">
@@ -53,8 +63,9 @@ const Navbar = () => {
                     style={{ display: "none" }}
                     type="file"
                     id="file"
+                    name='  '
                     accept=".png,.jpeg,.jpg"
-                    onChange={(e) => setImg(e.target.files[0])}
+                    onChange={handleFileChange}
                 />
             </label>
             <button className="AddPost__button-share button-global">

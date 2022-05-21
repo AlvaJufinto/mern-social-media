@@ -59,16 +59,16 @@ const Home = () => {
           <div className="Home__middle-side__post-containers">
             { isAuthLoading && <i className="fas fa-circle-notch fa-spin Home__middle-side__information "></i> }
             { feedPosts?.length > 0 && !isAuthLoading && 
-              feedPosts?.map(( post, i ) => (
+              feedPosts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
                 <Post 
                   key={i}
+                  image={post?.post?.image}
                   postId={post?._id}
-                  period={post?.date}  
-                  date={post?.date}
-                  username={post?.belongsTo?.username}
-                  description={post?.description}
-                  likes={post?.likes?.length} 
-                  comments={post?.comments?.length} 
+                  period={post?.post?.date}
+                  username={post?.belongsto?.username}
+                  description={post?.post?.description}
+                  like={post?.post?.likes?.length} 
+                  comment={post?.post?.comments?.length} 
                 />
               ))
             }
@@ -76,8 +76,8 @@ const Home = () => {
           </div>
         </div>
         <div className="Home__right-side right-section-global">
-          { isAuthLoading &&  <i className="fas fa-circle-notch fa-spin Home__middle-side__IconLoading "></i> }
-          { !isAuthLoading && !userErrorMessage && 
+          { isAuthLoading && <i className="fas fa-circle-notch fa-spin Home__middle-side__IconLoading "></i> }
+          { !isAuthLoading && 
             <div className="Home__right-side__UserShortcut">
               <img src={noAvatar} alt="bruv" className="UserShortcut__img" />
               <div className="UserShortcut__name">
