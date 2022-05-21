@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import {
   Link
 } from "react-router-dom";
+import moment from "moment";
 
 import { ReactComponent as LikeOutLine } from "./../assets/svg/like_outline.svg";
 import { ReactComponent as LikeBg } from "./../assets/svg/like_bg.svg";
@@ -20,10 +21,10 @@ const Post = ({ postId, username, period, description, imgLink }) => {
         <div className="Post__Top">
             <Link to={`/${username}`}>
                 <img src={noAvatar} alt="bruh" className="Post__Top__profile-img" />
-                <p className="Post__Top__username">{username}</p>
+                <p className="Post__Top__username">{username} •	{moment(period).fromNow()}</p>
             </Link>
 
-            <p className="Post__Top__period" >{period}</p>
+            <p className="Post__Top__period" >{}</p>
         </div>
         <div className="Post__Middle">
             <p className="Post__Middle__Description">{description}</p>

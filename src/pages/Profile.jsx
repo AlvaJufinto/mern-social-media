@@ -15,7 +15,7 @@ import noBanner from "./../assets/img/noBanner.jpg"
 import './../styles/pages-css/profile.css';
 
 const Profile = () => {
-  const { userAuth } = useContext(UserContext);
+  const { userAuth, userPosts } = useContext(UserContext);
   const { username } = useParams();
   const [isSelf, setIsSelf] = useState(false);
 
@@ -110,7 +110,22 @@ const Profile = () => {
             </div>
             <div className="Profile__bottom-container__PostContainer">
               {isSelf && <AddPost />}
-              <Post />
+              {
+                isSelf ?
+                  userPosts?.map(( post, i ) => (
+                    <Post 
+                      key={i}
+                      postId={post?._id}
+                      period={post?.date}
+                      username={userAuth?.username}
+                      description={post?.description}
+                      likes={post?.likes?.length} 
+                      comments={post?.comments?.length} 
+                    />
+                  ))
+                :
+                  <Post />
+              }
             </div>
           </div>
         </div>

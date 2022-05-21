@@ -20,6 +20,10 @@ const Home = () => {
   let navigate = useNavigate();
   let jwtToken = localStorage.getItem("SM_JWT_Token");
 
+  useEffect(() => {
+    console.log(userPosts);
+  }, [])
+
   useEffect(async () => {
     try {
       let res = await userApi.feeds(jwtToken);
@@ -55,10 +59,13 @@ const Home = () => {
           <div className="Home__middle-side__post-containers">
             { isAuthLoading && <i className="fas fa-circle-notch fa-spin Home__middle-side__information "></i> }
             { feedPosts?.length > 0 && !isAuthLoading && 
-              feedPosts?.map(( post ) => (
+              feedPosts?.map(( post, i ) => (
                 <Post 
+                  key={i}
                   postId={post?._id}
-                  username={userAuth?.username}
+                  period={post?.date}  
+                  date={post?.date}
+                  username={post?.belongsTo?.username}
                   description={post?.description}
                   likes={post?.likes?.length} 
                   comments={post?.comments?.length} 
