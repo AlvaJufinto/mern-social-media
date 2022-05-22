@@ -120,8 +120,8 @@ const Profile = () => {
                       period={post?.post?.date}
                       username={userAuth?.username}
                       description={post?.post?.description}
-                      like={post?.post?.likes?.length} 
-                      comment={post?.post?.comments?.length} 
+                      like={post?.post?.likes} 
+                      comment={post?.post?.comments} 
                     />
                   ))
                 :

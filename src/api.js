@@ -1,6 +1,16 @@
 import axios from "axios";
 const baseUrl = "http://localhost:5000/api"
 
+
+export const publicRoute = {
+  getUser: (body) => {
+    
+  },
+  getPost: (body) => {
+    return axios.get(`${baseUrl}/public/post/${body}`);
+  }
+}
+
 export const authApi = {
   signUp: (body) => {
     return axios.post(`${baseUrl}/auth/signup`, body);
@@ -10,13 +20,25 @@ export const authApi = {
   },
 };
 
-export const publicRoute = {
-  getUser: (body) => {
-    
+export const interactApi = {
+  likePost: (token, postId) => {
+    return axios.put(`${baseUrl}/interact/like/${postId}`,
+    {},
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,  
+      }
+    });
   },
-  getPost: (body) => {
-    return axios.get(`${baseUrl}/public/post/${body}`);
-  }
+  unlikePost: (token, postId) => {
+    return axios.put(`${baseUrl}/interact/unlike/${postId}`,
+    {},
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,  
+      }
+    });
+  },
 }
 
 export const userApi = {

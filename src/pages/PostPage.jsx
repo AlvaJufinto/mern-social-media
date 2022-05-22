@@ -6,7 +6,6 @@ import {
 import { publicRoute } from "../api";
 
 import Navbar from "../components/Navbar";
-import AddPost from "../components/AddPost";
 import Post from "../components/Post";
 import noAvatar from "./../assets/img/noAvatar.png";
 
@@ -15,6 +14,10 @@ import './../styles/pages-css/post-page.css';
 const PostPage = () => {
   const { id } = useParams();
   const [postDetails, setPostDetails] = useState();
+
+  useEffect(() =>{
+    console.log(postDetails?.post)
+  }, [postDetails])
 
   useEffect( async () => {
     console.log(id);
@@ -38,8 +41,8 @@ const PostPage = () => {
           period={postDetails?.post?.date}
           image={postDetails?.post?.image}
           description={postDetails?.post?.description}
-          comment={postDetails?.post?.comments}
-          like={postDetails?.post?.likes}
+          comment={postDetails?.comments}
+          like={postDetails?.likes}
         />
         <div className="PostPage__CommentSection container-border-global">
           <div className="PostPage__comments-container">

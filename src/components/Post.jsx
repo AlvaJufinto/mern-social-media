@@ -7,7 +7,7 @@ import {
 import moment from "moment";
 
 import { UserContext } from "../context/UserContext";
-import { userApi } from "../api";
+import { userApi, interactApi } from "../api";
 
 import { ReactComponent as LikeOutLine } from "./../assets/svg/like_outline.svg";
 import { ReactComponent as LikeBg } from "./../assets/svg/like_bg.svg";
@@ -19,8 +19,8 @@ import './../styles/components-css/post.css';
 
 const Post = ({ postId, username, period, description, like, comment, image }) => { 
   const { userAuth, isUserPostsLoading,dispatch } = useContext(UserContext);
-  const [likes, setLikes] = useState(like && like);
-  const [isLiked, setIsLiked] = useState(false);
+  const [likes, setLikes] = useState(like?.length);
+  const [isLiked, setIsLiked] = useState(like?.includes(userAuth?._id));
   let jwtToken = localStorage.getItem("SM_JWT_Token");
   
   let navigate = useNavigate();
@@ -28,17 +28,41 @@ const Post = ({ postId, username, period, description, like, comment, image }) =
 
   useEffect(() => {
     console.log(location.pathname.split("/")[1]);
-  }, [])
+    console.log(like?.includes(userAuth?._id));
+    console.log(jwtToken);
+  }, [jwtToken])
 
-const deletePostHandler = async () => {
+  const likePostHandler = async () => {
+    setLikes(isLiked ? likes - 1 : likes + 1);
+      
+    if(isLiked) {
+        try {
+            setIsLiked(false);
+            let res = await interactApi.unlikePost(jwtToken, postId)
+            console.log(res)  
+        } catch (err) {
+            console.log(err.response)
+        }
+    } else {
+        setIsLiked(true);
+        try {
+          let res = await interactApi.likePost(jwtToken, postId)
+          console.log(res)  
+        } catch (err) {
+          console.log(err.response)
+        }
+    }
+  }
+
+  const deletePostHandler = async () => {
     dispatch({ type: "DELETE_POST_START" });
     try {
         let res = await userApi.deletePost(jwtToken, postId);
         console.log(res);
         dispatch({ type: "DELETE_POST_SUCCESS", payload: postId });
+        
         if(location.pathname.split("/")[1] === 'p') {
             navigate(-1);
-            console.log("ingyah")
         }
     } catch (err) {
         console.log(err.reponse)
@@ -67,16 +91,13 @@ const deletePostHandler = async () => {
             {image && <img src={image?.imageUrl} className="Post__Middle__img" alt={image?.imageID} />}
         </div>
         <div className="Post__Bottom">
-            <div className="Post__Bottom__likes-comments" onClick={() => {
-                setIsLiked(!isLiked );
-                setLikes(isLiked ? likes - 1 : likes + 1);
-            }}>
+            <div className="Post__Bottom__likes-comments" onClick={likePostHandler}>
                 {isLiked ? <LikeBg /> : <LikeOutLine />}
-                <p>{likes ? likes : like} Like{likes > 1 && 's'}</p>
+                <p>{likes} Like{likes > 1 && 's'}</p>
             </div>
             <Link className="Post__Bottom__likes-comments" to={`/p/${postId}`}>
                 <i class="fa-solid fa-message"></i>
-                <p>{comment} Comment{comment?.length > 1 && 's'}</p>
+                <p>{comment?.length} Comment{comment?.length > 1 && 's'}</p>
             </Link>
         </div>
       </div>
