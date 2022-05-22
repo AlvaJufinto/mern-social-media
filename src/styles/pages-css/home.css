@@ -24,6 +24,11 @@
     gap: 15px;
     margin: 0 0 30px 0;
 }
+.Home__right-side__UserShortcut a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 .UserShortcut__img {
     height: 60px;
     width: 60px;

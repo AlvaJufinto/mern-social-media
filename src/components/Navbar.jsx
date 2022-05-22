@@ -16,10 +16,10 @@ const Navbar = () => {
   return (
       <div className="NavbarWrapper">
         <div className="NavbarContainer section-global">
-            <div className="Navbar__logo left-section-global">
+            <Link className="Navbar__logo left-section-global" to="/">
                 <SyncLogo />
                 <h2>Synchronize</h2>    
-            </div>
+            </Link>
             <div className="Navbar__search-container input-wrapper-global middle-section-global">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search for users..." className="Navbar__text-input input-text-global"></input>

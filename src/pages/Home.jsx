@@ -79,11 +79,13 @@ const Home = () => {
           { isAuthLoading && <i className="fas fa-circle-notch fa-spin Home__middle-side__IconLoading "></i> }
           { !isAuthLoading && 
             <div className="Home__right-side__UserShortcut">
-              <img src={noAvatar} alt="bruv" className="UserShortcut__img" />
-              <div className="UserShortcut__name">
-                <p className="UserShortcut__username">{userAuth?.username}</p>
-                <h3 className="UserShortcut__fullname">{userAuth?.fullname}</h3>
-              </div>
+              <Link to={`/${userAuth?.username}`}>
+                <img src={noAvatar} alt="bruv" className="UserShortcut__img" />
+                <div className="UserShortcut__name">
+                  <p className="UserShortcut__username">{userAuth?.username}</p>
+                  <h3 className="UserShortcut__fullname">{userAuth?.fullname}</h3>
+                </div>
+              </Link>
               <i className="UserShortcut__icon fa-solid fa-arrow-right-from-bracket" onClick={homeLogout}></i>
             </div>
           }
