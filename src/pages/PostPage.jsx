@@ -33,7 +33,7 @@ const PostPage = () => {
       <Navbar />
       <div className="PostPageContainer section-global">
         <Post
-          postId={postDetails?._id}
+          postId={id}
           username={postDetails?.belongsto?.username}
           period={postDetails?.post?.date}
           image={postDetails?.post?.image}

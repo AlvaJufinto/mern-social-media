@@ -22,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     console.log(userPosts);
-  }, [])
+  }, [userPosts])
 
   useEffect(async () => {
     try {
@@ -63,7 +63,7 @@ const Home = () => {
                 <Post 
                   key={i}
                   image={post?.post?.image}
-                  postId={post?._id}
+                  postId={post?.post?._id}
                   period={post?.post?.date}
                   username={post?.belongsto?.username}
                   description={post?.post?.description}

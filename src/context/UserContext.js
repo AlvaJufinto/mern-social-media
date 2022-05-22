@@ -64,6 +64,30 @@ const AuthReducer = (state, action) => {
                 isUserPostsLoading: false,
                 userErrorMessage: action.payload,
             }
+        case "DELETE_POST_START":
+            return {
+                userAuth: state.userAuth,
+                userPosts: state.userPosts,
+                isAuthLoading: false,
+                isUserPostsLoading: true,
+                userErrorMessage: null,
+            }
+        case "DELETE_POST_SUCCESS":
+            return {
+                userAuth: state.userAuth,
+                userPosts: state.userPosts?.filter((item) => item.post?._id !== action.payload),
+                isAuthLoading: false,
+                isUserPostsLoading: false,
+                userErrorMessage: null,
+            }
+        case "DELETE_POST_FAILURE":
+            return {
+                userAuth: state.userAuth,
+                userPosts: state.userPosts,
+                isAuthLoading: false,
+                isUserPostsLoading: false,
+                userErrorMessage: action.payload,
+            }
         default: 
             return state;
     }

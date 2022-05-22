@@ -46,5 +46,13 @@ export const userApi = {
       }
     });
   },
+  deletePost: (token, id) => {
+    return axios.delete(`${baseUrl}/user/deletepost/${id}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,  
+      }
+    });
+  },
 };
 

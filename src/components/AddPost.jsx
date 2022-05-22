@@ -35,7 +35,7 @@ const Navbar = () => {
       let res = await userApi.addPost(jwtToken, formData);
       console.log(res);
       dispatch({ type: "ADD_POST_SUCCESS", payload: res.data.data });
-      setDescription(null)
+      setDescription("")
       setImage(null);
     } catch (err) {
       console.log(err.response.data.message)

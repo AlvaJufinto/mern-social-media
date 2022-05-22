@@ -21,8 +21,9 @@
     border: 1px solid var(--grey);
     border-radius: 50%;
 }
-.Post__Top__period {
+.Post__Top__trash {
     color: var(--violet);   
+    cursor: pointer;
 }
 
 .Post__Middle {
