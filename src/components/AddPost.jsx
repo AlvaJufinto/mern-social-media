@@ -27,7 +27,7 @@ const Navbar = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append('gambar', image.data)
+    formData.append('gambar', image?.data)
     formData.append('description', description)
     
     dispatch({ type: "ADD_POST_START" })
