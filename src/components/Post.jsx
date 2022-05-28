@@ -51,6 +51,7 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
   const likeChecker = () => {
     postLikes?.map(( like ) => {
       if(like?.username === userAuth?.username ) {
+        console.log(like);
         setIsPostLiked(true);
       }
     });  
@@ -65,7 +66,7 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
               let res = await interactApi.unlikePost(jwtToken, postId)
               console.log(res)  
               setIsPostLiked(false);
-              // setPostLikes(postLikes - 1)
+              setPostLikes(postLikes?.filter(like => like?.username !== userAuth?.username))
           } catch (err) {
               console.log(err.response)
           }
@@ -74,7 +75,7 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
               let res = await interactApi.likePost(jwtToken, postId)
               console.log(res)  
               setIsPostLiked(true);
-              // setPostLikes(postLikes + 1)
+              setPostLikes([ ...postLikes, { username: userAuth.username, fullname: userAuth.fullname }])
           } catch (err) {
               console.log(err.response)
           }
