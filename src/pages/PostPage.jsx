@@ -26,11 +26,10 @@ const PostPage = () => {
       console.log(res.data.data);
       setPostDetails(res.data.data)
     } catch (err) {
-      console.log(err.response)
+      console.log(err.response);
     }
-  }, [id])
+  }, [id])  
   
-
   return (
     <>
       <Navbar />

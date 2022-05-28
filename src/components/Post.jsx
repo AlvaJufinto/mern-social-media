@@ -7,7 +7,7 @@ import {
 import moment from "moment";
 
 import { UserContext } from "../context/UserContext";
-import { userApi, interactApi } from "../api";
+import { userApi, interactApi, publicRoute } from "../api";
 
 import { ReactComponent as LikeOutLine } from "./../assets/svg/like_outline.svg";
 import { ReactComponent as LikeBg } from "./../assets/svg/like_bg.svg";
@@ -17,10 +17,12 @@ import noBanner from "./../assets/img/noBanner.jpg";
 
 import './../styles/components-css/post.css';
 
-const Post = ({ postId, username, period, description, like, comment, image }) => { 
-  const { userAuth, isUserPostsLoading,dispatch } = useContext(UserContext);
+const Post = ({ postId, username, period, description, like, comment, image, }) => { 
+  const { userAuth, isUserPostsLoading, dispatch } = useContext(UserContext);
   const [likes, setLikes] = useState(like?.length);
+  const [postLikes, setPostLikes] = useState();
   const [isLiked, setIsLiked] = useState(like?.includes(userAuth?._id));
+  const [isPostLiked, setIsPostLiked] = useState();
   let jwtToken = localStorage.getItem("SM_JWT_Token");
   
   let navigate = useNavigate();
@@ -32,25 +34,71 @@ const Post = ({ postId, username, period, description, like, comment, image }) =
     console.log(jwtToken);
   }, [jwtToken])
 
+  useEffect( async () => {
+    try {
+      let res = await publicRoute.getPostLikes(postId);
+      console.log(res.data.data);
+      setPostLikes(res.data.data);
+    } catch (err) {
+      console.log(err.response);
+    }
+  }, [postId, isLiked])
+
+  useEffect(() => {
+    likeChecker()
+  }, [postLikes, location])
+
+  const likeChecker = () => {
+    postLikes?.map(( like ) => {
+      if(like?.username === userAuth?.username ) {
+        setIsPostLiked(true);
+      }
+    });  
+  }
+
   const likePostHandler = async () => {
-    setLikes(isLiked ? likes - 1 : likes + 1);
+    if(location.pathname.split("/")[1]) {
+      // setPostLikes(isPostLiked ? postLikes?.length - 1 : postLikes?.length + 1);
       
-    if(isLiked) {
-        try {
-            setIsLiked(false);
-            let res = await interactApi.unlikePost(jwtToken, postId)
-            console.log(res)  
-        } catch (err) {
-            console.log(err.response)
-        }
+      if(isPostLiked) {
+          try {
+              let res = await interactApi.unlikePost(jwtToken, postId)
+              console.log(res)  
+              setIsPostLiked(false);
+              // setPostLikes(postLikes - 1)
+          } catch (err) {
+              console.log(err.response)
+          }
+      } else {
+          try {
+              let res = await interactApi.likePost(jwtToken, postId)
+              console.log(res)  
+              setIsPostLiked(true);
+              // setPostLikes(postLikes + 1)
+          } catch (err) {
+              console.log(err.response)
+          }
+      }
     } else {
-        setIsLiked(true);
-        try {
-          let res = await interactApi.likePost(jwtToken, postId)
-          console.log(res)  
-        } catch (err) {
-          console.log(err.response)
-        }
+      setLikes(isLiked ? likes - 1 : likes + 1);
+      
+      if(isLiked) {
+          try {
+              let res = await interactApi.unlikePost(jwtToken, postId)
+              console.log(res)  
+              setIsLiked(false);
+          } catch (err) {
+              console.log(err.response)
+          }
+      } else {
+          try {
+              let res = await interactApi.likePost(jwtToken, postId)
+              console.log(res)  
+              setIsLiked(true);
+          } catch (err) {
+              console.log(err.response)
+          }
+      }
     }
   }
 
@@ -92,8 +140,13 @@ const Post = ({ postId, username, period, description, like, comment, image }) =
         </div>
         <div className="Post__Bottom">
             <div className="Post__Bottom__likes-comments" onClick={likePostHandler}>
-                {isLiked ? <LikeBg /> : <LikeOutLine />}
-                <p>{likes} Like{likes > 1 && 's'}</p>
+                {
+                  location.pathname.split("/")[1] === 'p' ?
+                    isPostLiked ? <LikeBg /> : <LikeOutLine />
+                  :
+                    isLiked ? <LikeBg /> : <LikeOutLine />
+                }
+                <p>{likes || postLikes?.length} Like{likes > 1 && 's'}</p>
             </div>
             <Link className="Post__Bottom__likes-comments" to={`/p/${postId}`}>
                 <i class="fa-solid fa-message"></i>

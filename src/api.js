@@ -8,6 +8,9 @@ export const publicRoute = {
   },
   getPost: (body) => {
     return axios.get(`${baseUrl}/public/post/${body}`);
+  },
+  getPostLikes: (body) => {
+    return axios.get(`${baseUrl}/public/post/likes/${body}`)
   }
 }
 
