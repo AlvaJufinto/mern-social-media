@@ -18,12 +18,16 @@ import './../styles/pages-css/profile.css';
 const Profile = () => {
   const { userAuth, userPosts } = useContext(UserContext);
   const { username } = useParams();
-  const [isSelf, setIsSelf] = useState(username === userAuth?.username ? true : false);
+  const [isSelf, setIsSelf] = useState(true);
   const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
-    setIsSelf(username === userAuth?.username ? true : false)
-  }, [username])
+    if(username === userAuth?.username) {
+      setIsSelf(true);
+    } else {
+      setIsSelf(false);
+    }
+  }, [username, userAuth])
 
   useEffect( async () => {
     if(!isSelf) {
@@ -136,18 +140,23 @@ const Profile = () => {
               {isSelf && <AddPost />} 
               {
                 isSelf ?
-                  userPosts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
-                    <Post 
-                      key={i}
-                      postId={post?.post?._id}
-                      image={post?.post?.image}
-                      period={post?.post?.date}
-                      username={userAuth?.username}
-                      description={post?.post?.description}
-                      like={post?.post?.likes} 
-                      comment={post?.post?.comments} 
-                    />
-                  ))
+                  <>
+                    {
+                      userPosts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
+                        <Post 
+                          key={i}
+                          postId={post?.post?._id}
+                          image={post?.post?.image}
+                          period={post?.post?.date}
+                          username={userAuth?.username}
+                          description={post?.post?.description}
+                          like={post?.post?.likes} 
+                          comment={post?.post?.comments} 
+                        />
+                      ))
+                    }
+                    {userPosts?.length === 0 && <p style={{ textAlign: 'center', fontSize: '1.5rem' }}>Theres no post available 😔</p>}
+                  </>
                 :
                   <>
                     {
@@ -164,7 +173,7 @@ const Profile = () => {
                         />
                       ))
                     }
-                    {userInfo?.posts?.length == 0 && <p style={{ textAlign: 'center', fontSize: '1.5rem' }}>Theres no post available 😔</p>}
+                    {userInfo?.posts?.length === 0 && <p style={{ textAlign: 'center', fontSize: '1.5rem' }}>Theres no post available 😔</p>}
                   </>
               }
             </div>
