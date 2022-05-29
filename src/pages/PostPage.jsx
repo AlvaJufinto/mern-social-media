@@ -77,7 +77,7 @@ const PostPage = () => {
           period={postDetails?.post?.date}
           image={postDetails?.post?.image}
           description={postDetails?.post?.description}
-          comment={postDetails?.comments}
+          comment={postComments}
           like={postDetails?.likes}
         />
         <div className="PostPage__CommentSection container-border-global">
