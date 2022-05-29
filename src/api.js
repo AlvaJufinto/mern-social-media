@@ -4,7 +4,7 @@ const baseUrl = "http://localhost:5000/api"
 
 export const publicRoute = {
   getUser: (body) => {
-    
+    return axios.get(`${baseUrl}/public/user/${body}`)
   },
   getPost: (body) => {
     return axios.get(`${baseUrl}/public/post/${body}`);

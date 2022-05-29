@@ -3,6 +3,7 @@ import {
   Link,
   useParams 
 } from "react-router-dom";
+import { publicRoute } from "../api";
 import { UserContext } from "../context/UserContext";
 
 import Navbar from "../components/Navbar";
@@ -17,13 +18,24 @@ import './../styles/pages-css/profile.css';
 const Profile = () => {
   const { userAuth, userPosts } = useContext(UserContext);
   const { username } = useParams();
-  const [isSelf, setIsSelf] = useState(false);
-
+  const [isSelf, setIsSelf] = useState(username === userAuth?.username ? true : false);
+  const [userInfo, setUserInfo] = useState({});
+  
   useEffect(() => {
     setIsSelf(username === userAuth?.username ? true : false)
-   
-  }, [username, userAuth])
+  }, [username])
 
+  useEffect( async () => {
+    if(!isSelf) {
+      try {
+        let res = await publicRoute.getUser(username);
+        console.log(res.data.data); 
+        setUserInfo(res.data.data);
+      } catch (err) {
+        console.log(err.response);
+      } 
+    } 
+  }, [isSelf, username])
 
   return (
     <>
@@ -36,12 +48,12 @@ const Profile = () => {
             <div className="Profile__banner-container__Content">
               <img src={!userAuth?.profilePict?.imageUrl && noAvatar} alt="profile img" className="Profile__Content__img" />
               <div className="Profile__Content__bio">
-                <h1 className="Profile__bio__Username">{isSelf ? userAuth?.username : "other"}</h1>
-                <h2 className="Profile__bio__Fullname">{isSelf ? userAuth?.fullname : "other"}</h2>
-                <p className="Profile__bio__Description">{isSelf ? userAuth?.description : "other"}</p>
+                <h1 className="Profile__bio__Username">{isSelf ? userAuth?.username : userInfo?.username}</h1>
+                <h2 className="Profile__bio__Fullname">{isSelf ? userAuth?.fullname : userInfo?.fullname}</h2>
+                <p className="Profile__bio__Description">{isSelf ? userAuth?.description : userInfo?.description}</p>
                 <div className="Profile__bio__Connections">
-                  <div className="Profile__Connection"><span>{isSelf ? userAuth?.followers?.length : 0}</span> Followers</div>
-                  <div className="Profile__Connection"><span>{isSelf ? userAuth?.followings?.length : 0}</span> Followings</div>
+                  <div className="Profile__Connection"><span>{isSelf ? userAuth?.followers?.length : userInfo?.followers?.length}</span> Followers</div>
+                  <div className="Profile__Connection"><span>{isSelf ? userAuth?.followings?.length : userInfo?.followings?.length}</span> Followings</div>
                 </div>
               </div>
               {
@@ -67,21 +79,21 @@ const Profile = () => {
                   !userAuth?.detail?.work === "" &&
                   <div className="Profile__intro__category">
                     <i class="fa-solid fa-briefcase"></i>
-                    <p>Work : Peaky Blinders</p>
+                    <p>Work : {userAuth?.detail?.work}</p>
                   </div>
                 }
                 {
                   !userAuth?.detail?.relationship === "" &&
                   <div className="Profile__intro__category">
                     <i class="fa-solid fa-heart"></i>
-                    <p>Relationship : Playboy</p>
+                    <p>Relationship : {userAuth?.detail?.relationship}</p>
                   </div>
                 }
                 {
                   !userAuth?.detail?.website === "" &&
                   <div className="Profile__intro__category">
                     <i class="fa-solid fa-globe"></i>
-                    <a href="https://github.com/AlvaJufinto" target="_blank" >Website</a>
+                    <a href={userAuth?.detail?.website} target="_blank" >Website</a>
                   </div>
                 }
                 {userAuth?.detail?.from === "" && userAuth?.detail?.work === "" && userAuth?.detail?.relationship === "" && userAuth?.detail?.website === "" && <p>Theres no data available 😔</p>}
@@ -89,27 +101,39 @@ const Profile = () => {
               </div>
                 :
               <div className="Profile__Intro__categories-container">
-                <div className="Profile__intro__category">
-                  <i class="fa-solid fa-house"></i>
-                  <p>City : Birmingham</p>
-                </div>
-                <div className="Profile__intro__category">
-                  <i class="fa-solid fa-briefcase"></i>
-                  <p>Work : Peaky Blinders</p>
-                </div>
-                <div className="Profile__intro__category">
-                  <i class="fa-solid fa-heart"></i>
-                  <p>Relationship : Playboy</p>
-                </div>
-                <div className="Profile__intro__category">
-                  <i class="fa-solid fa-globe"></i>
-                  <a href="https://github.com/AlvaJufinto" target="_blank" >Website</a>
-                </div>
+                {!userInfo?.detail?.from === "" && 
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-house"></i>
+                    <p>City : {userInfo?.detail?.from}</p>
+                  </div>
+                }
+                {
+                  !userInfo?.detail?.work === "" &&
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <p>Work : {userInfo?.detail?.work}</p>
+                  </div>
+                }
+                {
+                  !userInfo?.detail?.relationship === "" &&
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-heart"></i>
+                    <p>Relationship : {userInfo?.detail?.relationship}</p>
+                  </div>
+                }
+                {
+                  !userInfo?.detail?.website === "" &&
+                  <div className="Profile__intro__category">
+                    <i class="fa-solid fa-globe"></i>
+                    <a href={userInfo?.detail?.website} target="_blank" >Website</a>
+                  </div>
+                }
+                {userInfo?.detail?.from === "" && userInfo?.detail?.work === "" && userInfo?.detail?.relationship === "" && userInfo?.detail?.website === "" && <p>Theres no data available 😔</p>}
               </div>
             }
             </div>
             <div className="Profile__bottom-container__PostContainer">
-              {isSelf && <AddPost />}
+              {isSelf && <AddPost />} 
               {
                 isSelf ?
                   userPosts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
@@ -125,7 +149,23 @@ const Profile = () => {
                     />
                   ))
                 :
-                  <Post />
+                  <>
+                    {
+                      userInfo?.posts?.sort((a, b) => new Date(b?.post?.date) - new Date(a?.post?.date))?.map(( post, i ) => (
+                        <Post 
+                          key={i}
+                          postId={post?.post?._id}
+                          image={post?.post?.image}
+                          period={post?.post?.date}
+                          username={userAuth?.username}
+                          description={post?.post?.description}
+                          like={post?.post?.likes} 
+                          comment={post?.post?.comments} 
+                        />
+                      ))
+                    }
+                    {userInfo?.posts?.length == 0 && <p style={{ textAlign: 'center', fontSize: '1.5rem' }}>Theres no post available 😔</p>}
+                  </>
               }
             </div>
           </div>
