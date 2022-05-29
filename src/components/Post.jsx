@@ -13,7 +13,6 @@ import { ReactComponent as LikeOutLine } from "./../assets/svg/like_outline.svg"
 import { ReactComponent as LikeBg } from "./../assets/svg/like_bg.svg";
 
 import noAvatar from "./../assets/img/noAvatar.png";
-import noBanner from "./../assets/img/noBanner.jpg";
 
 import './../styles/components-css/post.css';
 
@@ -59,8 +58,6 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
 
   const likePostHandler = async () => {
     if(location.pathname.split("/")[1]) {
-      // setPostLikes(isPostLiked ? postLikes?.length - 1 : postLikes?.length + 1);
-      
       if(isPostLiked) {
           try {
               let res = await interactApi.unlikePost(jwtToken, postId)
@@ -81,13 +78,12 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
           }
       }
     } else {
-      setLikes(isLiked ? likes - 1 : likes + 1);
-      
       if(isLiked) {
           try {
               let res = await interactApi.unlikePost(jwtToken, postId)
               console.log(res)  
               setIsLiked(false);
+              setLikes(likes - 1)
           } catch (err) {
               console.log(err.response)
           }
@@ -96,6 +92,7 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
               let res = await interactApi.likePost(jwtToken, postId)
               console.log(res)  
               setIsLiked(true);
+              setLikes(likes + 1)
           } catch (err) {
               console.log(err.response)
           }

@@ -1,9 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import {
   Link,
   useParams
 } from "react-router-dom";
-import { publicRoute } from "../api";
+import { publicRoute, interactApi } from "../api";
+import { UserContext } from "../context/UserContext";
 
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
@@ -12,24 +13,60 @@ import noAvatar from "./../assets/img/noAvatar.png";
 import './../styles/pages-css/post-page.css';
 
 const PostPage = () => {
+  const { userAuth } = useContext(UserContext);
   const { id } = useParams();
-  const [postDetails, setPostDetails] = useState();
+  const [postDetails, setPostDetails] = useState({});
+  const [comment, setComment] = useState("");
+  const [postComments, setPostComments] = useState([]);
+  let jwtToken = localStorage.getItem("SM_JWT_Token");
 
   useEffect(() =>{
-    console.log(postDetails?.post)
+    console.log(postDetails?.comments);
   }, [postDetails])
-
-  useEffect( async () => {
-    console.log(id);
+  
+  useEffect(() => {
+    fetchPost();
+  }, [id])  
+  
+  const fetchPost = async () => {
     try {
       let res = await publicRoute.getPost(id);
       console.log(res.data.data);
-      setPostDetails(res.data.data)
+      setPostDetails(res.data.data);
+      setPostComments(res.data.data.comments.reverse());
     } catch (err) {
       console.log(err.response);
     }
-  }, [id])  
-  
+  }
+
+  const commentHandler = async (e) => {
+    e.preventDefault();
+    const body = {
+      comment: comment, 
+    }
+    console.log(body)
+    try {
+      let res = await interactApi.commentPost(jwtToken, id, body);
+      setComment("")
+      setPostComments([
+        { 
+          belongsto: { 
+            username: userAuth?.username, 
+            fullname: userAuth?.fullname,
+            profilePict: {
+              imageID: 'zamndaniel',
+              imageUrl: 'zamndaniel',
+            } 
+          }, 
+          comment: comment 
+        },
+        ...postComments
+      ])
+    } catch (err) {
+      console.log(err.response);
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -45,33 +82,22 @@ const PostPage = () => {
         />
         <div className="PostPage__CommentSection container-border-global">
           <div className="PostPage__comments-container">
-            <div className="PostPage__Comment">
-                <img src={noAvatar} alt="profile img" className="PostPage__Comment__img" />
+            {postComments?.map(( comment ) => (
+              <div className="PostPage__Comment">
+                <img src={comment?.belongsto?.profilePict?.imageUrl === "zamndaniel" || null || "" ? noAvatar : comment?.belongsto?.profilePict?.imageUrl} alt="profile img" className="PostPage__Comment__img" />
                 <div className="PostPage__Comment__right-section">
-                  <div className="PostPage__Comment__comment-details">
-                    <h3 className="PostPage__Comment__username">tom.shelby</h3>
-                    <p className="PostPage__Comment__period">3 days Ago</p>
-                  </div>
+                  <Link to={`/${comment?.belongsto?.username}`} className="PostPage__Comment__comment-details">
+                    <h3 className="PostPage__Comment__username">{comment?.belongsto?.username}</h3>
+                  </Link>
                   <div className="PostPage__Comment__Content">
-                    SLEBEWWWWWWWWW
+                    {comment?.comment}
                   </div>
                 </div>
-            </div>
-            <div className="PostPage__Comment">
-                <img src={noAvatar} alt="profile img" className="PostPage__Comment__img" />
-                <div className="PostPage__Comment__right-section">
-                  <div className="PostPage__Comment__comment-details">
-                    <h3 className="PostPage__Comment__username">tom.shelby</h3>
-                    <p className="PostPage__Comment__period">3 days Ago</p>
-                  </div>
-                  <div className="PostPage__Comment__Content">
-                    SLEBEWWWWWWWWW
-                  </div>
-                </div>
-            </div>
+              </div>
+            ))}
           </div>
-          <form  className="PostPage__AddComment">
-            <input type="text" className="PostPage__AddComment__search-input input-wrapper-global" />
+          <form className="PostPage__AddComment" onSubmit={e =>commentHandler(e)}>
+            <input type="text" value={comment} onChange={e => setComment(e.target.value)} className="PostPage__AddComment__search-input input-wrapper-global" placeholder="Add your comment here.." required/>
             <button className="PostPage__AddComment__search-button button-global">Comment</button>
           </form>
         </div>

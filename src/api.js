@@ -42,6 +42,15 @@ export const interactApi = {
       }
     });
   },
+  commentPost: (token, id, body) => {
+    return axios.put(`${baseUrl}/interact/comment/${id}`,
+    body,
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,  
+      }
+    });
+  },
 }
 
 export const userApi = {
