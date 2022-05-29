@@ -19,7 +19,7 @@ import './../styles/components-css/post.css';
 const Post = ({ postId, username, period, description, like, comment, image, }) => { 
   const { userAuth, isUserPostsLoading, dispatch } = useContext(UserContext);
   const [likes, setLikes] = useState(like?.length);
-  const [postLikes, setPostLikes] = useState();
+  const [postLikes, setPostLikes] = useState([]);
   const [isLiked, setIsLiked] = useState(like?.includes(userAuth?._id));
   const [isPostLiked, setIsPostLiked] = useState();
   let jwtToken = localStorage.getItem("SM_JWT_Token");
@@ -45,15 +45,15 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
 
   useEffect(() => {
     likeChecker()
-  }, [postLikes, location])
+  }, [postLikes, location, likes, isLiked, isPostLiked])
+
 
   const likeChecker = () => {
     postLikes?.map(( like ) => {
       if(like?.username === userAuth?.username ) {
-        console.log(like);
         setIsPostLiked(true);
       }
-    });  
+    }); 
   }
 
   const likePostHandler = async () => {
@@ -83,16 +83,16 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
               let res = await interactApi.unlikePost(jwtToken, postId)
               console.log(res)  
               setIsLiked(false);
-              setLikes(likes - 1)
+              setLikes(likes - 1);
           } catch (err) {
               console.log(err.response)
           }
       } else {
           try {
               let res = await interactApi.likePost(jwtToken, postId)
-              console.log(res)  
+              console.log(res);  
               setIsLiked(true);
-              setLikes(likes + 1)
+              setLikes(likes + 1);
           } catch (err) {
               console.log(err.response)
           }
@@ -140,11 +140,19 @@ const Post = ({ postId, username, period, description, like, comment, image, }) 
             <div className="Post__Bottom__likes-comments" onClick={likePostHandler}>
                 {
                   location.pathname.split("/")[1] === 'p' ?
-                    isPostLiked ? <LikeBg /> : <LikeOutLine />
+                    <>
+                      {isPostLiked ? <LikeBg /> : <LikeOutLine />}
+                      <p>{postLikes?.length} Like{likes > 1 && 's'}</p>
+                    </>
                   :
-                    isLiked ? <LikeBg /> : <LikeOutLine />
+                    <>
+                      {isLiked ? <LikeBg /> : <LikeOutLine />}
+                      <p>{likes} Like{likes > 1 && 's'}</p>
+                    </>
                 }
-                <p>{likes || postLikes?.length} Like{likes > 1 && 's'}</p>
+                {
+                  
+                }
             </div>
             <Link className="Post__Bottom__likes-comments" to={`/p/${postId}`}>
                 <i class="fa-solid fa-message"></i>
